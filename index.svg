@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet href="index.svg.css"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="background: #333">
+    <!--<image href="media/2.jpg" width="1800" class="source" x="-230" y="-200"/>-->
+    <polygon points="143,270 157,270 157,309 143,309" stroke="#fff"/>
+    <polygon points="157,270 191,270 191,309 157,309" stroke="#fff"/>
+    <polygon points="436,270 445,270 447,309 438,309" stroke="#fff"/>
+    <polygon points="445,270 474,270 476,309 447,309" stroke="#fff"/>
+    <rect x="119" y="205" width="427" height="67"/>
+    <polygon points="709,66 759,79 759,197 709,197" stroke="#fff"/>
+    <polygon points="709,66 759,79 759 66" stroke="#fff"/>
+    <rect x="432" y="85" width="375" height="35"/>
+    <polygon points="641,69 664,73 664,318 641,318" stroke="#fff"/>
+    <polygon points="791,66 792,197 769,197" stroke="#fff"/>
+    <polygon points="943,216 998,218 1059,205 1054,310 943,310" stroke="#fff"/>
+    <rect x="87" y="142" width="587" height="62"/>
+    <rect x="473" y="112" width="375" height="41"/>
+    <rect x="507" y="267" width="359" height="42"/>
+    <rect x="703" y="230" width="403" height="44"/>
+    <polygon points="597,43 617,44 617,318 597,318" stroke="#fff"/>
+    <polygon points="617,44 641,58 641,318 617,318" stroke="#fff"/>
+    <polygon points="577,62 613,64 613,318 577,318" stroke="#fff"/>
+    <rect x="369" y="197" width="511" height="44"/>
+    <polygon points="269,153 277,174 277,308 269,308" stroke="#fff"/>
+    <polygon points="269,153 277,174 295,161" stroke="#fff"/>
+    <polygon points="277,174 289,168 309,156 295,161" stroke="#fff"/>
+    <polygon points="289,168 309,156 353,169 337,182" stroke="#fff"/>
+    <polygon points="353,169 337,182 348,177 365,164" stroke="#fff"/>
+    <polygon points="348,177 365,164 373,183" stroke="#fff"/>
+    <polygon points="260,194 270,190 275,194 275,308 260,308" stroke="#fff"/>
+    <polygon points="277,174 289,168 337,182 348,177 373,183 375,308 277,308" stroke="#fff"/>
+    <polygon points="315,194 355,204 355,308 315,308" stroke="#fff"/>
+    <line x1="0" y1="309" x2="577" y2="309" stroke="#fff"/>
+    <line x1="0" y1="310" x2="1012" y2="322" stroke="#fff"/>
+    <polygon points="282,308 388,308 388,314 282,314" stroke="#ccc" fill="#ccc"/>
+    <polygon points="625,310 685,310 688,318 620,316" stroke="#ccc" fill="#ccc"/>
+    <polygon points="981,310 1117,310 1133,323 1213,323 1212,330 1229,330 1229,354 1166,354 1166,338 1141,338 1141,331 1100,330 1100,323 981,322" stroke="#ccc" fill="#ccc"/>
+    <polyline points="0,330 1012,330 1012,321 1068,321 1068,354 1292,354" stroke="#ccc" stroke-width="5" fill="transparent"/>
+    <!--<image href="media/2.jpg" width="1800" class="source" x="-230" y="-200"/>-->
+    <script href="index.svg.js"/>
+</svg>

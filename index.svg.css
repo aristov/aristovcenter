@@ -1,0 +1,18 @@
+rect
+{
+    fill: rgba(100, 200, 200, 1);
+    stroke: #555;
+}
+rect,
+polygon
+{
+    transition: fill 150ms ease;
+}
+rect:hover,
+polygon:hover
+{
+    fill: transparent;
+    /*stroke: #fff;*/
+    stroke: transparent;
+    stroke-width: 1px;
+}
