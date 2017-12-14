@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--<?xml-stylesheet href="index.svg.css"?>-->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 325">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 350">
     <style xmlns="http://www.w3.org/1999/xhtml"><![CDATA[
         rect
         {
@@ -16,6 +16,10 @@
         {
             fill: rgba(100, 200, 200, 0.5);
         }
+        polygon
+        {
+            stroke: grey;
+        }
         polygon:hover
         {
             fill: rgba(0, 0, 0, 0.5);
@@ -28,11 +32,11 @@
         .base
         {
             stroke: #666;
-            fill: #666;
+            fill: rgba(100, 200, 200, 1);
         }
     ]]></style>
     <!--<image href="media/2.jpg" width="1800" class="source" x="-230" y="-200"/>-->
-    <rect class="ground" x="0" y="309" width="1250" height="12"/>
+    <rect class="ground" x="0" y="309" width="1250" height="32"/>
     <polygon points="143,270 157,270 157,309 143,309" stroke="#fff"/>
     <polygon points="157,270 191,270 191,309 157,309" stroke="#fff"/>
     <polygon points="436,270 445,270 447,309 438,309" stroke="#fff"/>
@@ -67,6 +71,6 @@
     <polygon class="base" points="260,309 375,309 375,314 260,314"/>
     <polygon class="base" points="625,309 685,309 688,319 620,319"/>
     <!--<polygon class="base" points="981,310 1117,310 1133,323 1213,323 1213,330 1229,330 1229,354 1166,354 1166,338 1141,338 1141,331 1100,331 1100,323 981,322"/>-->
-    <!--<polyline points="0,330 1012,330 1012,321 1068,321 1068,354 1292,354" stroke="#666" stroke-width="5" fill="transparent"/>-->
+    <!--<polyline points="0,330 1012,330 1012,321 1068,321 1068,354 1292,354" stroke="rgba(100, 200, 200, 1)" stroke-width="5" fill="transparent"/>-->
     <!--<image href="media/2.jpg" width="1800" class="source" x="-230" y="-200"/>-->
 </svg>
