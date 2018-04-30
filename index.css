@@ -25,6 +25,10 @@ a
 {
     color: inherit;
 }
+a:not(:hover)
+{
+    text-decoration: none;
+}
 header
 {
     font-size: 26px;
@@ -49,7 +53,7 @@ main
 figure
 {
     position: fixed;
-    top: 70px;
+    top: 75px;
     bottom: 50px;
     display: none;
     width: 100%;
@@ -83,6 +87,7 @@ footer
     text-align: center;
     padding: 15px;
     box-sizing: border-box;
+    opacity: 0.6;
 }
 @media (max-width: 970px)
 {
