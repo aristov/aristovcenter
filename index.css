@@ -5,6 +5,10 @@ body
     margin: 0;
     background: rgba(0, 0, 0, 0.8);
 }
+a
+{
+    color: white;
+}
 header
 {
     font-size: 26px;
@@ -14,28 +18,45 @@ header
     top: 0;
     text-align: center;
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     box-sizing: border-box;
 }
 main
 {
     position: fixed;
     width: 100%;
-    top: 50px;
-    bottom: 50px;
+    top: 0;
+    bottom: 0;
+    cursor: pointer;
 }
 main figure
 {
     position: fixed;
-    width: 100%;
-    top: 50px;
+    top: 70px;
     bottom: 50px;
+    display: none;
+    width: 100%;
     margin: 0;
     background: center center / contain no-repeat;
+    transition: left .5s;
 }
-main figure:not(:first-of-type)
+main figure:nth-of-type(1),
+main figure:nth-of-type(2),
+main figure:nth-of-type(3)
 {
-    display: none;
+    display: block;
+}
+main figure:nth-of-type(1)
+{
+    left: -100%;
+}
+main figure:nth-of-type(2)
+{
+    left: 0;
+}
+main figure:nth-of-type(3)
+{
+    left: 100%;
 }
 footer
 {
