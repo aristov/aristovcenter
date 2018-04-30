@@ -1,3 +1,9 @@
+html,
+body
+{
+    width: 100%;
+    height: 100%;
+}
 body
 {
     color: white;
@@ -6,6 +12,15 @@ body
     background-color: rgba(0, 0, 0, 0.8);
     transition: color .5s, background-color .5s;
 }
+html,
+body,
+header,
+main,
+footer,
+figure
+{
+    min-width: 320px;
+}
 a
 {
     color: inherit;
@@ -13,6 +28,7 @@ a
 header
 {
     font-size: 26px;
+    line-height: 1.5em;
     text-transform: uppercase;
     letter-spacing: 12px;
     position: fixed;
@@ -30,7 +46,7 @@ main
     bottom: 0;
     cursor: pointer;
 }
-main figure
+figure
 {
     position: fixed;
     top: 70px;
@@ -41,21 +57,21 @@ main figure
     background: center center / contain no-repeat;
     transition: left .5s;
 }
-main figure:nth-of-type(1),
-main figure:nth-of-type(2),
-main figure:nth-of-type(3)
+figure:nth-of-type(1),
+figure:nth-of-type(2),
+figure:nth-of-type(3)
 {
     display: block;
 }
-main figure:nth-of-type(1)
+figure:nth-of-type(1)
 {
     left: -100%;
 }
-main figure:nth-of-type(2)
+figure:nth-of-type(2)
 {
     left: 0;
 }
-main figure:nth-of-type(3)
+figure:nth-of-type(3)
 {
     left: 100%;
 }
@@ -67,4 +83,29 @@ footer
     text-align: center;
     padding: 15px;
     box-sizing: border-box;
+}
+@media (max-width: 970px)
+{
+    figure
+    {
+        top: 110px;
+    }
+}
+@media (max-width: 640px)
+{
+    header
+    {
+        font-size: 16px;
+    }
+    figure
+    {
+        top: 80px;
+    }
+}
+@media (max-width: 500px)
+{
+    figure
+    {
+        top: 110px;
+    }
 }
