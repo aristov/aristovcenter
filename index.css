@@ -1,3 +1,20 @@
+a
+{
+    color: inherit;
+}
+a:not(:hover)
+{
+    text-decoration: none;
+}
+html,
+body,
+header,
+main,
+footer,
+main > figure
+{
+    min-width: 320px;
+}
 html,
 body
 {
@@ -12,23 +29,6 @@ body
     background-color: rgba(0, 0, 0, 0.8);
     transition: color .5s, background-color .5s;
 }
-html,
-body,
-header,
-main,
-footer,
-figure
-{
-    min-width: 320px;
-}
-a
-{
-    color: inherit;
-}
-a:not(:hover)
-{
-    text-decoration: none;
-}
 header
 {
     font-size: 26px;
@@ -42,43 +42,6 @@ header
     padding: 20px;
     box-sizing: border-box;
 }
-main
-{
-    position: fixed;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-    cursor: pointer;
-}
-figure
-{
-    position: fixed;
-    top: 75px;
-    bottom: 50px;
-    display: none;
-    width: 100%;
-    margin: 0;
-    background: center center / contain no-repeat;
-    transition: left .5s;
-}
-figure:nth-of-type(1),
-figure:nth-of-type(2),
-figure:nth-of-type(3)
-{
-    display: block;
-}
-figure:nth-of-type(1)
-{
-    left: -100%;
-}
-figure:nth-of-type(2)
-{
-    left: 0;
-}
-figure:nth-of-type(3)
-{
-    left: 100%;
-}
 footer
 {
     position: fixed;
@@ -89,9 +52,72 @@ footer
     box-sizing: border-box;
     opacity: 0.6;
 }
+main
+{
+    position: fixed;
+    width: 100%;
+    top: 75px;
+    bottom: 50px;
+    cursor: pointer;
+}
+main > figure
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: none;
+    width: 100%;
+    margin: 0;
+    background: center center / contain no-repeat;
+    transition: left .5s;
+}
+main > figure:nth-of-type(1),
+main > figure:nth-of-type(2),
+main > figure:nth-of-type(3)
+{
+    display: block;
+}
+main > figure:nth-of-type(1)
+{
+    left: -100%;
+}
+main > figure:nth-of-type(2)
+{
+    left: 0;
+}
+main > figure:nth-of-type(3)
+{
+    left: 100%;
+}
+button
+{
+    position: fixed;
+    display: none;
+    top: calc(50vh - 50px);
+    width: 70px;
+    height: 100px;
+    border: none;
+    padding: 0;
+    z-index: 1;
+    opacity: 0;
+}
+button:hover
+{
+    opacity: .5;
+}
+button.prev
+{
+    left: 0;
+    background: #444 url(graphics/prev.svg) center center no-repeat;
+}
+button.next
+{
+    right: 0;
+    background: #444 url(graphics/next.svg) center center no-repeat;
+}
 @media (max-width: 970px)
 {
-    figure
+    main
     {
         top: 110px;
     }
@@ -102,14 +128,14 @@ footer
     {
         font-size: 16px;
     }
-    figure
+    main
     {
         top: 80px;
     }
 }
 @media (max-width: 500px)
 {
-    figure
+    main
     {
         top: 110px;
     }

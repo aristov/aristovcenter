@@ -3,6 +3,8 @@
     const TOUCH_DISTANCE_THRESHOLD = 150
     const body = document.body
     const main = document.querySelector('main')
+    const prevButton = document.querySelector('button.prev')
+    const nextButton = document.querySelector('button.next')
     let timerId
     function next() {
         main.append(main.firstElementChild)
@@ -60,6 +62,14 @@
             }
             body.ontouchend = null
         }
+    }
+    prevButton.onclick = event => {
+        prev()
+        stopTimer()
+    }
+    nextButton.onclick = event => {
+        next()
+        stopTimer()
     }
     startTimer()
 }
