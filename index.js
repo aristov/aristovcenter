@@ -1,14 +1,40 @@
 {
+    const body = document.body
     const main = document.querySelector('main')
-    document.body.onkeydown = event => {
-        if(event.key === 'ArrowRight' || event.key === ' ') {
-            main.append(main.firstElementChild)
+    let timerId
+    body.onkeydown = event => {
+        const key = event.key
+        if(key === 'ArrowRight' || key === ' ') {
+            next()
+            clearInterval(timerId)
         }
-        else if(event.key === 'ArrowLeft') {
-            main.prepend(main.lastElementChild)
+        else if(key === 'ArrowLeft') {
+            prev()
+            clearInterval(timerId)
         }
     }
     main.onclick = event => {
-        main.append(main.firstElementChild)
+        next()
+        clearInterval(timerId)
     }
+    function next() {
+        main.append(main.firstElementChild)
+        changeColor()
+    }
+    function prev() {
+        main.prepend(main.lastElementChild)
+        changeColor()
+    }
+    function changeColor() {
+        const { bg, color } = main.children[1].dataset
+        body.style.backgroundColor = bg || ''
+        body.style.color = color || ''
+    }
+    function intervalSwitch() {
+        timerId = setTimeout(() => {
+            next()
+            intervalSwitch()
+        }, 5000)
+    }
+    intervalSwitch()
 }
