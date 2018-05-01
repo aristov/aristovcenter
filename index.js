@@ -3,21 +3,22 @@
     const TOUCH_DISTANCE_THRESHOLD = 150
     const body = document.body
     const main = document.querySelector('main')
+    const article = main.querySelector('article')
     const prevButton = document.querySelector('button.prev')
     const nextButton = document.querySelector('button.next')
     let timerId
     function next() {
-        main.append(main.firstElementChild)
+        article.append(article.firstElementChild)
         changeColor()
     }
     function prev() {
-        main.prepend(main.lastElementChild)
+        article.prepend(article.lastElementChild)
         changeColor()
     }
     function changeColor() {
-        const { bg, color } = main.children[1].dataset
+        const { bg, className } = article.children[1].dataset
         body.style.backgroundColor = bg || ''
-        body.style.color = color || ''
+        body.className = className || ''
     }
     function startTimer() {
         timerId = setTimeout(() => {
@@ -33,7 +34,10 @@
     }
     body.onkeydown = event => {
         const key = event.key
-        if(key === 'ArrowRight' || key === ' ') {
+        if(key === ' ' && event.target.tagName === 'BUTTON') [
+            event.stopPropagation()
+        ]
+        else if(key === 'ArrowRight' || key === ' ') {
             next()
             stopTimer()
         }
@@ -41,10 +45,6 @@
             prev()
             stopTimer()
         }
-    }
-    main.onclick = event => {
-        next()
-        stopTimer()
     }
     body.ontouchstart = event => {
         const changedTouches = event.changedTouches
@@ -66,10 +66,12 @@
     prevButton.onclick = event => {
         prev()
         stopTimer()
+        event.stopPropagation()
     }
     nextButton.onclick = event => {
         next()
         stopTimer()
+        event.stopPropagation()
     }
     startTimer()
 }

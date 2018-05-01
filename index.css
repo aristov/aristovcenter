@@ -11,7 +11,7 @@ body,
 header,
 main,
 footer,
-main > figure
+article > figure
 {
     min-width: 320px;
 }
@@ -27,7 +27,7 @@ body
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.8);
-    transition: color .5s, background-color .5s;
+    transition: color .7s, background-color .7s;
 }
 header
 {
@@ -48,7 +48,7 @@ footer
     bottom: 0;
     width: 100%;
     text-align: center;
-    padding: 15px;
+    padding: 8px;
     box-sizing: border-box;
     opacity: 0.6;
 }
@@ -57,10 +57,10 @@ main
     position: fixed;
     width: 100%;
     top: 75px;
-    bottom: 50px;
+    bottom: 40px;
     cursor: pointer;
 }
-main > figure
+article > figure
 {
     position: absolute;
     top: 0;
@@ -69,51 +69,77 @@ main > figure
     width: 100%;
     margin: 0;
     background: center center / contain no-repeat;
-    transition: left .5s;
+    transition: left .7s;
 }
-main > figure:nth-of-type(1),
-main > figure:nth-of-type(2),
-main > figure:nth-of-type(3)
+article > figure:nth-of-type(1),
+article > figure:nth-of-type(2),
+article > figure:nth-of-type(3)
 {
     display: block;
 }
-main > figure:nth-of-type(1)
+article > figure:nth-of-type(1)
 {
     left: -100%;
 }
-main > figure:nth-of-type(2)
+article > figure:nth-of-type(2)
 {
     left: 0;
 }
-main > figure:nth-of-type(3)
+article > figure:nth-of-type(3)
 {
     left: 100%;
 }
 button
 {
-    position: fixed;
-    display: none;
-    top: calc(50vh - 50px);
-    width: 70px;
-    height: 100px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    width: 50%;
     border: none;
     padding: 0;
     z-index: 1;
     opacity: 0;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    transition: opacity .2s;
 }
-button:hover
+button path
 {
-    opacity: .5;
+    transition: fill .7s;
 }
 button.prev
 {
     left: 0;
-    background: #444 url(graphics/prev.svg) center center no-repeat;
+}
+button.prev svg
+{
+    position: absolute;
+    left: 10px;
 }
 button.next
 {
     right: 0;
-    background: #444 url(graphics/next.svg) center center no-repeat;
+}
+button.next svg
+{
+    position: absolute;
+    right: 10px;
+}
+button:hover,
+main:not(:hover) button:focus
+{
+    opacity: .2;
+}
+body.white
+{
+    color: #000;
+}
+body.white button path
+{
+    fill: #000;
 }
 @media (max-width: 970px)
 {
