@@ -41,6 +41,7 @@ header
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    opacity: 0.8;
 }
 footer
 {

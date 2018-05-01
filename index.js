@@ -1,18 +1,17 @@
 {
     const DELAY = 5000
-    const TOUCH_DISTANCE_THRESHOLD = 150
+    const TOUCH_DISTANCE_THRESHOLD = 50
+    const TOUCH_INTERVAL = 500
     const body = document.body
     const main = document.querySelector('main')
     const article = main.querySelector('article')
-    const prevButton = document.querySelector('button.prev')
-    const nextButton = document.querySelector('button.next')
     let timerId
-    function next() {
-        article.append(article.firstElementChild)
-        changeColor()
-    }
     function prev() {
         article.prepend(article.lastElementChild)
+        changeColor()
+    }
+    function next() {
+        article.append(article.firstElementChild)
         changeColor()
     }
     function changeColor() {
@@ -49,29 +48,34 @@
     body.ontouchstart = event => {
         const changedTouches = event.changedTouches
         const startX = changedTouches[0].clientX
+        const timeStamp = Date.now()
         body.ontouchend = event => {
-            const changedTouches = event.changedTouches
-            const endX = changedTouches[0].clientX
-            if(endX > startX + TOUCH_DISTANCE_THRESHOLD) {
-                prev()
-                stopTimer()
-            }
-            else if(startX > endX + TOUCH_DISTANCE_THRESHOLD) {
-                next()
-                stopTimer()
+            if(timeStamp + TOUCH_INTERVAL > Date.now()) {
+                const changedTouches = event.changedTouches
+                const endX = changedTouches[0].clientX
+                if(endX > startX + TOUCH_DISTANCE_THRESHOLD) {
+                    prev()
+                    stopTimer()
+                }
+                else if(startX > endX + TOUCH_DISTANCE_THRESHOLD) {
+                    next()
+                    stopTimer()
+                }
             }
             body.ontouchend = null
         }
     }
-    prevButton.onclick = event => {
-        prev()
-        stopTimer()
-        event.stopPropagation()
-    }
-    nextButton.onclick = event => {
-        next()
-        stopTimer()
-        event.stopPropagation()
+    body.onclick = event => {
+        const target = event.target
+        if(target.tagName === 'BUTTON') {
+            if(target.classList.contains('prev')) {
+                prev()
+            }
+            else if(target.classList.contains('next')) {
+                next()
+            }
+            stopTimer()
+        }
     }
     startTimer()
 }
