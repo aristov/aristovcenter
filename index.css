@@ -52,6 +52,7 @@ header h1
 header svg
 {
     position: absolute;
+    display: none;
     margin: 4px;
     cursor: pointer;
     transition: opacity .2s;
