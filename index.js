@@ -79,6 +79,6 @@
     }
     body.onload = event => {
         body.removeAttribute('aria-busy')
+        startTimer()
     }
-    startTimer()
 }

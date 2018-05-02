@@ -33,16 +33,32 @@ header
 {
     font-size: 18px;
     line-height: 1.5em;
-    text-transform: uppercase;
     letter-spacing: 7px;
     position: fixed;
     top: 0;
-    text-align: center;
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    opacity: 0.8;
+    opacity: .8;
     transition: top 1s;
+}
+header h1
+{
+    font: inherit;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 44px;
+}
+header svg
+{
+    position: absolute;
+    margin: 4px;
+    cursor: pointer;
+    transition: opacity .2s;
+}
+header svg:not(:hover)
+{
+    opacity: .3;
 }
 footer
 {
@@ -132,14 +148,17 @@ button.next svg
     position: absolute;
     right: 10px;
 }
-button:hover,
-main:not(:hover) button:focus
+button:hover
 {
     opacity: .2;
 }
 body.white
 {
     color: #000;
+}
+body.white header path
+{
+    stroke: #000;
 }
 body.white button path
 {
