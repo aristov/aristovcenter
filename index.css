@@ -42,6 +42,7 @@ header
     padding: 20px;
     box-sizing: border-box;
     opacity: 0.8;
+    transition: top 1s;
 }
 footer
 {
@@ -52,6 +53,7 @@ footer
     padding: 8px;
     box-sizing: border-box;
     opacity: 0.6;
+    transition: bottom 1s;
 }
 main
 {
@@ -141,6 +143,14 @@ body.white
 body.white button path
 {
     fill: #000;
+}
+body[aria-busy=true] header
+{
+    top: -110px;
+}
+body[aria-busy=true] footer
+{
+    bottom: -40px;
 }
 @media (max-width: 970px)
 {

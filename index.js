@@ -3,7 +3,7 @@
     const TOUCH_DISTANCE_THRESHOLD = 50
     const TOUCH_INTERVAL = 500
     const body = document.body
-    const main = document.querySelector('main')
+    const main = body.querySelector('main')
     const article = main.querySelector('article')
     let timerId
     function prev() {
@@ -76,6 +76,9 @@
             }
             stopTimer()
         }
+    }
+    body.onload = event => {
+        body.removeAttribute('aria-busy')
     }
     startTimer()
 }
