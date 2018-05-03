@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--<?xml-stylesheet href="index.svg.css"?>-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 350">
+    <style xmlns="http://www.w3.org/1999/xhtml"><![CDATA[
+        rect
+        {
+            fill: rgba(100, 200, 200, 1);
+            stroke: #555;
+        }
+        rect,
+        polygon
+        {
+            transition: fill 150ms ease;
+        }
+        rect:hover
+        {
+            fill: rgba(100, 200, 200, 0.5);
+        }
+        polygon
+        {
+            stroke: grey;
+        }
+        polygon:hover
+        {
+            fill: rgba(0, 0, 0, 0.5);
+        }
+        .ground
+        {
+            fill: rgba(0, 0, 0, 0.4);
+            stroke: transparent;
+        }
+        .base
+        {
+            stroke: #666;
+            fill: rgba(100, 200, 200, 1);
+        }
+    ]]></style>
+    <!--<image href="media/2.jpg" width="1800" class="source" x="-230" y="-200"/>-->
+    <rect class="ground" x="0" y="309" width="1250" height="32"/>
+    <polygon points="143,270 157,270 157,309 143,309" stroke="#fff"/>
+    <polygon points="157,270 191,270 191,309 157,309" stroke="#fff"/>
+    <polygon points="436,270 445,270 447,309 438,309" stroke="#fff"/>
+    <polygon points="445,270 474,270 476,309 447,309" stroke="#fff"/>
+    <rect x="119" y="205" width="427" height="67" tabindex="0"/>
+    <polygon points="709,66 759,79 759,197 709,197" stroke="#fff"/>
+    <polygon points="709,66 759,79 759 66" stroke="#fff"/>
+    <rect x="432" y="85" width="375" height="35" tabindex="0"/>
+    <polygon points="641,69 664,73 664,318 641,318" stroke="#fff"/>
+    <polygon points="791,66 792,197 769,197" stroke="#fff"/>
+    <polygon points="943,216 998,218 1059,205 1054,309 943,309" stroke="#fff"/>
+    <rect x="87" y="142" width="587" height="62" tabindex="0" onclick="this.nextElementSibling.style.display = 'block'"/>
+    <text x="90" y="172" font-family="Arial" font-size="25" style="display:none">Клуб</text>
+    <rect x="473" y="112" width="375" height="41" tabindex="0"/>
+    <rect x="507" y="267" width="359" height="42" tabindex="0"/>
+    <rect x="703" y="230" width="403" height="44" tabindex="0"/>
+    <!--<line x1="0" y1="309" x2="1250" y2="309" stroke="rgba(255, 255, 255, 0.5)"/>-->
+    <!--<line x1="0" y1="310" x2="1012" y2="322" stroke="rgba(255, 255, 255, 0.5)"/>-->
+    <polygon points="597,43 617,44 617,318 597,318" stroke="#fff"/>
+    <polygon points="617,44 641,58 641,318 617,318" stroke="#fff"/>
+    <polygon points="577,62 613,64 613,319 577,319" stroke="#fff"/>
+    <rect x="369" y="197" width="511" height="44" tabindex="0"/>
+    <polygon points="269,153 277,174 277,309 269,309" stroke="#fff"/>
+    <polygon points="269,153 277,174 295,161" stroke="#fff"/>
+    <polygon points="277,174 289,168 309,156 295,161" stroke="#fff"/>
+    <polygon points="289,168 309,156 353,169 337,182" stroke="#fff"/>
+    <polygon points="353,169 337,182 348,177 365,164" stroke="#fff"/>
+    <polygon points="348,177 365,164 373,183" stroke="#fff"/>
+    <polygon points="260,194 270,190 275,194 275,309 260,309" stroke="#fff"/>
+    <polygon points="277,174 289,168 337,182 348,177 373,183 375,309 277,309" stroke="#fff"/>
+    <polygon points="315,194 355,204 355,309 315,309" stroke="#fff"/>
+    <polygon class="base" points="260,309 375,309 375,314 260,314"/>
+    <polygon class="base" points="625,309 685,309 688,319 620,319"/>
+    <!--<polygon class="base" points="981,310 1117,310 1133,323 1213,323 1213,330 1229,330 1229,354 1166,354 1166,338 1141,338 1141,331 1100,331 1100,323 981,322"/>-->
+    <!--<polyline points="0,330 1012,330 1012,321 1068,321 1068,354 1292,354" stroke="rgba(100, 200, 200, 1)" stroke-width="5" fill="transparent"/>-->
+    <!--<image href="media/2.jpg" width="1800" class="source" x="-230" y="-200"/>-->
+</svg>
