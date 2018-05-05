@@ -13,43 +13,47 @@
         <h1>Мастерская архитектора Аристова</h1>
     </header>
     <main>
-        <button class="prev" title="Предыдущий слайд">
+        <button class="prev" aria-label="Предыдущий слайд">
             <svg width="20" height="40" viewBox="0 0 20 40">
                 <path d="M 19 1 L 1 19 L 19 39" stroke-width="0" fill="#fff"/>
             </svg>
         </button>
-        <article>
-            <figure style="background-image: url('media/planit/masterplan.jpg');" data-bg="#000"></figure>
-
-            <figure style="background-image: url('media/center/figure.svg');"></figure>
-            <figure style="background-image: url('media/center/figure-1.jpg');" data-bg="#000"></figure>
-            <figure style="background-image: url('media/center/draw.jpg');" data-bg="#161f01"></figure>
-            <figure style="background-image: url('media/center/figure-2.jpg');" data-bg="#000"></figure>
-            <figure style="background-image: url('media/center/model.jpg');" data-bg="#fff" data-class-name="white"></figure>
-            <figure style="background-image: url('media/center/figure-3.jpg');" data-bg="#000"></figure>
-
-            <figure style="background-image: url('media/bank/front6.jpg');"></figure>
-            <figure style="background-image: url('media/bank/stair.jpg');" data-bg="#000"></figure>
-            <figure style="background-image: url('media/bank/front2.jpg');" data-bg="#202a33"></figure>
-            <figure style="background-image: url('media/bank/left5.jpg');"></figure>
-            <figure style="background-image: url('media/bank/left1.jpg');" data-bg="#000"></figure>
-            <figure style="background-image: url('media/bank/right1.jpg');"></figure>
-            <figure style="background-image: url('media/bank/back2-crop.jpg');" data-bg="#1f1a16"></figure>
-            <figure style="background-image: url('media/bank/helicopter.jpg');" data-bg="#fff" data-class-name="white"></figure>
-
-            <figure style="background-image: url('media/planit/front.jpg');"></figure>
-            <figure style="background-image: url('media/planit/axonometry-2.jpg');" data-bg="#fff" data-class-name="white"></figure>
-            <figure style="background-image: url('media/planit/fragment.jpg');"></figure>
-            <figure style="background-image: url('media/planit/axonometry-1.jpg');" data-bg="#788770"></figure>
-            <figure style="background-image: url('media/planit/sideright.jpg');"></figure>
-            <figure style="background-image: url('media/planit/scheme.jpg');" data-bg="#fff" data-class-name="white"></figure>
-            <figure style="background-image: url('media/planit/sideleft.jpg');"></figure>
-            <figure style="background-image: url('media/planit/axonometry-3.jpg');" data-bg="#bcc7c1" data-class-name="white"></figure>
-            <figure style="background-image: url('media/planit/back.jpg');"></figure>
-            <figure style="background-image: url('media/planit/crosssection.jpg');" data-bg="#fff" data-class-name="white"></figure>
-            <figure style="background-image: url('media/planit/montage.jpg');"></figure>
-        </article>
-        <button class="next" title="Следующий слайд">
+        <div role="group">
+            <article>
+                <figure style="background-image: url('media/planit/masterplan.jpg');" data-bg="#000"></figure>
+                <figure style="background-image: url('media/planit/front.jpg');"></figure>
+                <figure style="background-image: url('media/planit/axonometry-2.jpg');" data-bg="#fff" data-class-name="white"></figure>
+                <figure style="background-image: url('media/planit/fragment.jpg');"></figure>
+                <figure style="background-image: url('media/planit/axonometry-1.jpg');" data-bg="#788770"></figure>
+                <figure style="background-image: url('media/planit/sideright.jpg');"></figure>
+                <figure style="background-image: url('media/planit/scheme.jpg');" data-bg="#fff" data-class-name="white"></figure>
+                <figure style="background-image: url('media/planit/sideleft.jpg');"></figure>
+                <figure style="background-image: url('media/planit/axonometry-3.jpg');" data-bg="#bcc7c1" data-class-name="white"></figure>
+                <figure style="background-image: url('media/planit/back.jpg');"></figure>
+                <figure style="background-image: url('media/planit/crosssection.jpg');" data-bg="#fff" data-class-name="white"></figure>
+                <figure style="background-image: url('media/planit/montage.jpg');"></figure>
+            </article>
+            <article>
+                <figure style="background-image: url('media/center/figure-3.jpg');" data-bg="#000"></figure>
+                <figure style="background-image: url('media/center/figure.svg');"></figure>
+                <figure style="background-image: url('media/center/figure-1.jpg');" data-bg="#000"></figure>
+                <figure style="background-image: url('media/center/draw.jpg');" data-bg="#161f01"></figure>
+                <figure style="background-image: url('media/center/figure-2.jpg');" data-bg="#000"></figure>
+                <figure style="background-image: url('media/center/model.jpg');" data-bg="#fff" data-class-name="white"></figure>
+            </article>
+            <article>
+                <!--<figure style="background-image: url('media/bank/helicopter.jpg');" data-bg="#fff" data-class-name="white"></figure>-->
+                <figure style="background-image: url('media/bank/helicopter-crop.jpg');" data-bg="#fff" data-class-name="white"></figure>
+                <figure style="background-image: url('media/bank/front2.jpg');" data-bg="#202a33"></figure>
+                <figure style="background-image: url('media/bank/left5.jpg');"></figure>
+                <figure style="background-image: url('media/bank/stair.jpg');" data-bg="#000"></figure>
+                <figure style="background-image: url('media/bank/front6.jpg');"></figure>
+                <figure style="background-image: url('media/bank/left1.jpg');" data-bg="#000"></figure>
+                <figure style="background-image: url('media/bank/right1.jpg');"></figure>
+                <figure style="background-image: url('media/bank/back2-crop.jpg');" data-bg="#1f1a16"></figure>
+            </article>
+        </div>
+        <button class="next" aria-label="Следующий слайд">
             <svg width="20" height="40" viewBox="0 0 20 40">
                 <path d="M 1 1 L 19 19 L 1 39" stroke-width="0" fill="#fff"/>
             </svg>
