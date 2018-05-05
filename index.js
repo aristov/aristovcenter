@@ -6,6 +6,8 @@
     const main = body.querySelector('main')
     const group = main.querySelector('[role=group]')
     let timerId
+    let albumLength
+    let albumItem = 0
     function prevSlide() {
         const article = group.querySelectorAll('article')[1]
         article.prepend(article.lastElementChild)
@@ -32,7 +34,18 @@
     }
     function startTimer() {
         timerId = setTimeout(() => {
-            nextSlide()
+            if(!albumLength) {
+                albumLength = group.querySelectorAll('article')[1].childElementCount
+            }
+            if(albumItem < albumLength) {
+                nextSlide()
+                albumItem++
+            }
+            else {
+                nextAlbum()
+                albumLength = group.querySelectorAll('article')[1].childElementCount
+                albumItem = 0
+            }
             startTimer()
         }, DELAY)
     }
@@ -47,20 +60,19 @@
         if(key === ' ' && event.target.tagName === 'BUTTON') [
             event.stopPropagation()
         ]
-        else if(key === 'ArrowLeft') {
-            prevSlide()
-            stopTimer()
-        }
-        else if(key === 'ArrowRight' || key === ' ') {
-            nextSlide()
-            stopTimer()
-        }
-        else if(key === 'ArrowUp') {
-            prevAlbum()
-            stopTimer()
-        }
-        else if(key === 'ArrowDown') {
-            nextAlbum()
+        else if(key.startsWith('Arrow')) {
+            if(key === 'ArrowLeft') {
+                prevSlide()
+            }
+            else if(key === 'ArrowRight' || key === ' ') {
+                nextSlide()
+            }
+            else if(key === 'ArrowUp') {
+                prevAlbum()
+            }
+            else if(key === 'ArrowDown') {
+                nextAlbum()
+            }
             stopTimer()
         }
     }
