@@ -147,40 +147,70 @@ figure:nth-of-type(3)
 button
 {
     position: absolute;
-    top: 0;
-    bottom: 0;
     display: flex;
-    align-items: center;
-    width: 30%;
     border: none;
     padding: 0;
-    z-index: 1;
     opacity: 0;
     background: transparent;
     cursor: pointer;
     outline: none;
     transition: opacity .2s;
+    z-index: 1;
 }
-button path
+button svg
+{
+    position: absolute;
+}
+button svg path
 {
     transition: fill .7s;
 }
-button.prev
+button.prevslide,
+button.nextslide
+{
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    width: 30%;
+}
+button.prevalbum,
+button.nextalbum
+{
+    justify-content: center;
+    width: 100%;
+    height: 30%;
+    z-index: 2;
+}
+button.prevalbum
+{
+    top: 0;
+}
+button.nextalbum
+{
+    bottom: 0;
+}
+button.prevalbum svg
+{
+    top: 10px;
+}
+button.nextalbum svg
+{
+    bottom: 10px;
+}
+button.prevslide
 {
     left: 0;
 }
-button.prev svg
+button.prevslide svg
 {
-    position: absolute;
     left: 10px;
 }
-button.next
+button.nextslide
 {
     right: 0;
 }
-button.next svg
+button.nextslide svg
 {
-    position: absolute;
     right: 10px;
 }
 button:hover

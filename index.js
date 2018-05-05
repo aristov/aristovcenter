@@ -85,13 +85,19 @@
         }
     }
     body.onclick = event => {
-        const target = event.target
-        if(target.tagName === 'BUTTON') {
-            if(target.classList.contains('prev')) {
+        const { tagName, classList } = event.target
+        if(tagName === 'BUTTON') {
+            if(classList.contains('prevslide')) {
                 prevSlide()
             }
-            else if(target.classList.contains('next')) {
+            else if(classList.contains('nextslide')) {
                 nextSlide()
+            }
+            else if(classList.contains('prevalbum')) {
+                prevAlbum()
+            }
+            else if(classList.contains('nextalbum')) {
+                nextAlbum()
             }
             stopTimer()
         }
