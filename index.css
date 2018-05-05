@@ -81,7 +81,7 @@ main
     width: 100%;
     top: 65px;
     bottom: 35px;
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 main > div
 {

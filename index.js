@@ -78,18 +78,26 @@
     }
     body.ontouchstart = event => {
         const changedTouches = event.changedTouches
-        const startX = changedTouches[0].clientX
+        const { clientX : startX, clientY : startY } = changedTouches[0]
         const timeStamp = Date.now()
         body.ontouchend = event => {
             if(timeStamp + TOUCH_INTERVAL > Date.now()) {
                 const changedTouches = event.changedTouches
-                const endX = changedTouches[0].clientX
+                const { clientX : endX, clientY : endY } = changedTouches[0]
                 if(endX > startX + TOUCH_DISTANCE_THRESHOLD) {
                     prevSlide()
                     stopTimer()
                 }
                 else if(startX > endX + TOUCH_DISTANCE_THRESHOLD) {
                     nextSlide()
+                    stopTimer()
+                }
+                else if(endY > startY + TOUCH_DISTANCE_THRESHOLD) {
+                    prevAlbum()
+                    stopTimer()
+                }
+                else if(startY > endY + TOUCH_DISTANCE_THRESHOLD) {
+                    nextAlbum()
                     stopTimer()
                 }
             }
