@@ -129,6 +129,10 @@ article
 {
     color: #000;
 }
+.info a:hover
+{
+    opacity: .7;
+}
 .gallery,
 .group
 {
