@@ -23,10 +23,10 @@ body
 }
 body
 {
-    color: white;
+    color: rgba(255, 255, 255, .8);
     font-family: 'Montserrat', sans-serif;
     margin: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, .8);
     transition: color .7s, background-color .7s;
 }
 header
@@ -39,7 +39,6 @@ header
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    opacity: .8;
     transition: top 1s;
     z-index: 1;
 }
@@ -74,9 +73,9 @@ footer
     text-align: center;
     padding: 8px;
     box-sizing: border-box;
-    opacity: 0.6;
+    opacity: .6;
     transition: bottom 1s;
-    z-index: 1;
+    z-index: 2;
 }
 footer a:not(:hover)
 {
@@ -98,7 +97,7 @@ article
 }
 .info
 {
-    color: rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, .8);
     font-size: 17px;
     line-height: 1.6em;
     padding: 50px;
@@ -159,10 +158,68 @@ article
 {
     top: calc(100% + 50px);
 }
+details
+{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: -12px;
+    transition: background-color .3s, top .3s;
+    z-index: 2;
+}
+details summary
+{
+    font-weight: 500;
+    padding: 12px;
+    cursor: pointer;
+    outline: none;
+    transition: opacity .3s;
+}
+details summary::-webkit-details-marker
+{
+    display: none;
+}
+details summary::after
+{
+    content: url(graphics/closebutton.svg);
+    position: absolute;
+    right: 12px;
+}
+details summary:not(:hover)::after
+{
+    opacity: .5;
+}
+details:not([open]) summary:not(:hover)
+{
+    opacity: .8;
+}
+details:not([open]) summary::after
+{
+    display: none;
+}
+details summary + p
+{
+    margin-top: 4px;
+}
+details p
+{
+    transition: opacity .3s;
+}
+details:not([open]) p
+{
+    opacity: 0;
+}
+details[open]
+{
+    color: rgba(0, 0, 0, .8);
+    top: 0;
+    background-color: #fff;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .2);
+}
 figure
 {
     position: absolute;
-    top: 0;
+    top: 30px;
     bottom: 0;
     display: none;
     width: 100%;
@@ -226,7 +283,7 @@ main button.nextalbum
 }
 main button.prevalbum
 {
-    top: 0;
+    top: 40px;
 }
 main button.nextalbum
 {

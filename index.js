@@ -14,12 +14,14 @@
     let albumItem = 0
     function prevSlide() {
         const article = group.querySelectorAll('article')[1]
-        article.prepend(article.lastElementChild)
+        const figures = article.querySelectorAll('figure')
+        figures[0].before(figures[figures.length - 1])
         changeColor()
     }
     function nextSlide() {
         const article = group.querySelectorAll('article')[1]
-        article.append(article.firstElementChild)
+        const figures = article.querySelectorAll('figure')
+        figures[figures.length - 1].after(figures[0])
         changeColor()
     }
     function prevAlbum() {
@@ -32,14 +34,17 @@
     }
     function changeColor() {
         const article = group.querySelectorAll('article')[1]
-        const { bg, className } = article.children[1].dataset
+        const figures = article.querySelectorAll('figure')
+        const { bg, className } = figures[1].dataset
         body.style.backgroundColor = bg || ''
         body.className = className || ''
     }
     function startTimer() {
         timerId = setTimeout(() => {
             if(!albumLength) {
-                albumLength = group.querySelectorAll('article')[1].childElementCount
+                const article = group.querySelectorAll('article')[1]
+                const figures = article.querySelectorAll('figure')
+                albumLength = figures.length
             }
             if(albumItem < albumLength) {
                 nextSlide()
@@ -47,7 +52,9 @@
             }
             else {
                 nextAlbum()
-                albumLength = group.querySelectorAll('article')[1].childElementCount
+                const article = group.querySelectorAll('article')[1]
+                const figures = article.querySelectorAll('figure')
+                albumLength = figures.length
                 albumItem = 0
             }
             startTimer()
@@ -114,8 +121,9 @@
         }
     }
     body.onclick = event => {
-        const { tagName, classList } = event.target
-        if(tagName === 'BUTTON') {
+        const button = event.target.closest('button')
+        if(button) {
+            const classList = button.classList
             if(classList.contains('prevslide')) {
                 prevSlide()
             }
