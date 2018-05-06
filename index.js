@@ -63,27 +63,29 @@
         menubutton.setAttribute('aria-pressed', String(gallery.hidden = !(info.hidden = !info.hidden)))
     }
     body.onkeydown = event => {
-        const { key, target } = event
-        if(key === ' ' && target.tagName === 'BUTTON') [
-            event.stopPropagation()
-        ]
-        else if(key.startsWith('Arrow')) {
-            if(key === 'ArrowLeft') {
-                prevSlide()
+        if(!gallery.hidden) {
+            const { key, target } = event
+            if(key === ' ' && target.tagName === 'BUTTON') [
+                event.stopPropagation()
+            ]
+            else if(key.startsWith('Arrow')) {
+                if(key === 'ArrowLeft') {
+                    prevSlide()
+                }
+                else if(key === 'ArrowRight' || key === ' ') {
+                    nextSlide()
+                }
+                else if(key === 'ArrowUp') {
+                    prevAlbum()
+                }
+                else if(key === 'ArrowDown') {
+                    nextAlbum()
+                }
+                stopTimer()
             }
-            else if(key === 'ArrowRight' || key === ' ') {
-                nextSlide()
-            }
-            else if(key === 'ArrowUp') {
-                prevAlbum()
-            }
-            else if(key === 'ArrowDown') {
-                nextAlbum()
-            }
-            stopTimer()
         }
     }
-    body.ontouchstart = event => {
+    gallery.ontouchstart = event => {
         const changedTouches = event.changedTouches
         const { clientX : startX, clientY : startY } = changedTouches[0]
         const timeStamp = Date.now()
