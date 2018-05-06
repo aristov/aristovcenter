@@ -3,7 +3,11 @@
     const TOUCH_DISTANCE_THRESHOLD = 50
     const TOUCH_INTERVAL = 500
     const body = document.body
+    const header = body.querySelector('header')
     const main = body.querySelector('main')
+    const menubutton = header.querySelector('button')
+    const info = main.querySelector('article.info')
+    const gallery = main.querySelector('.gallery')
     const group = main.querySelector('[role=group]')
     let timerId
     let albumLength
@@ -55,9 +59,12 @@
             timerId = null
         }
     }
+    menubutton.onclick = event => {
+        menubutton.setAttribute('aria-pressed', String(gallery.hidden = !(info.hidden = !info.hidden)))
+    }
     body.onkeydown = event => {
-        const key = event.key
-        if(key === ' ' && event.target.tagName === 'BUTTON') [
+        const { key, target } = event
+        if(key === ' ' && target.tagName === 'BUTTON') [
             event.stopPropagation()
         ]
         else if(key.startsWith('Arrow')) {

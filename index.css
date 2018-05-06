@@ -2,9 +2,9 @@ a
 {
     color: inherit;
 }
-a:not(:hover)
+button
 {
-    text-decoration: none;
+    outline: none;
 }
 html,
 body,
@@ -50,17 +50,20 @@ header h1
     text-transform: uppercase;
     margin: 0 44px;
 }
-header svg
+header button
 {
     position: absolute;
-    display: none;
-    margin: 4px;
+    margin-top: -16px;
+    margin-left: -16px;
     cursor: pointer;
+    padding: 20px;
+    border: none;
+    background: transparent;
     transition: opacity .2s;
 }
-header svg:not(:hover)
+header button:not(:hover):not([aria-pressed=true])
 {
-    opacity: .3;
+    opacity: .5;
 }
 footer
 {
@@ -75,43 +78,84 @@ footer
     transition: bottom 1s;
     z-index: 1;
 }
+footer a:not(:hover)
+{
+    text-decoration: none;
+}
 main
 {
     position: fixed;
     width: 100%;
     top: 65px;
     bottom: 35px;
-    /*cursor: pointer;*/
-}
-main > div
-{
-    position: absolute;
-    width: 100%;
-    height: 100%;
 }
 article
 {
     position: absolute;
     width: 100%;
     height: 100%;
-    display: none;
     transition: top .7s;
 }
-article:nth-of-type(1),
-article:nth-of-type(2),
-article:nth-of-type(3)
+.info
+{
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 17px;
+    line-height: 1.6em;
+    padding: 50px;
+    box-sizing: border-box;
+    background: #f9faf8;
+    z-index: 2;
+}
+.info > .inner
+{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 860px;
+}
+.info .textblock
+{
+    display: inline-block;
+}
+.info img
+{
+    margin-right: 50px;
+}
+.info h1
+{
+    font-size: 20px;
+    margin-top: 30px;
+}
+.info a
+{
+    color: #000;
+}
+.gallery,
+.group
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.group article
+{
+    display: none;
+}
+.group article:nth-of-type(1),
+.group article:nth-of-type(2),
+.group article:nth-of-type(3)
 {
     display: block;
 }
-article:nth-of-type(1)
+.group article:nth-of-type(1)
 {
     top: calc(-100% - 120px);
 }
-article:nth-of-type(2)
+.group article:nth-of-type(2)
 {
     top: 0;
 }
-article:nth-of-type(3)
+.group article:nth-of-type(3)
 {
     top: calc(100% + 50px);
 }
@@ -144,7 +188,7 @@ figure:nth-of-type(3)
 {
     left: 100%;
 }
-button
+main button
 {
     position: absolute;
     display: flex;
@@ -153,67 +197,66 @@ button
     opacity: 0;
     background: transparent;
     cursor: pointer;
-    outline: none;
     transition: opacity .2s;
     z-index: 1;
 }
-button svg
+main button svg
 {
     position: absolute;
 }
-button svg path
+main button svg path
 {
     transition: fill .7s;
 }
-button.prevslide,
-button.nextslide
+main button.prevslide,
+main button.nextslide
 {
     top: 0;
     bottom: 0;
     align-items: center;
     width: 30%;
 }
-button.prevalbum,
-button.nextalbum
+main button.prevalbum,
+main button.nextalbum
 {
     justify-content: center;
     width: 100%;
     height: 30%;
     z-index: 2;
 }
-button.prevalbum
+main button.prevalbum
 {
     top: 0;
 }
-button.nextalbum
+main button.nextalbum
 {
     bottom: 0;
 }
-button.prevalbum svg
+main button.prevalbum svg
 {
     top: 10px;
 }
-button.nextalbum svg
+main button.nextalbum svg
 {
     bottom: 10px;
 }
-button.prevslide
+main button.prevslide
 {
     left: 0;
 }
-button.prevslide svg
+main button.prevslide svg
 {
     left: 10px;
 }
-button.nextslide
+main button.nextslide
 {
     right: 0;
 }
-button.nextslide svg
+main button.nextslide svg
 {
     right: 10px;
 }
-button:hover
+main button:hover
 {
     opacity: .5;
 }
@@ -221,12 +264,9 @@ body.white
 {
     color: #000;
 }
-body.white header path
-{
-    stroke: #000;
-}
 body.white button path
 {
+    stroke: #000;
     fill: #000;
 }
 body[aria-busy=true] header
@@ -237,18 +277,44 @@ body[aria-busy=true] footer
 {
     bottom: -40px;
 }
-@media (max-width: 640px)
+@media (max-width: 660px)
+{
+    .info > .inner
+    {
+        display: block;
+    }
+    .info img
+    {
+        display: block;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 730px)
 {
     main
     {
         top: 90px;
     }
 }
-@media (max-width: 430px)
+@media (max-width: 520px)
+{
+    header
+    {
+        font-size: 15px;
+    }
+}
+@media (max-width: 480px)
 {
     main
     {
-        top: 120px;
+        top: 105px;
+    }
+}
+@media (max-width: 410px)
+{
+    .info
+    {
+        font-size: 14px;
     }
 }
 @media (max-width: 370px)
