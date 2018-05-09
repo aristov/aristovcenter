@@ -26,7 +26,7 @@
         }
         .ground
         {
-            fill: rgba(0, 0, 0, 0.4);
+            fill: rgba(0, 0, 0, 0.7);
             stroke: transparent;
         }
         .base
