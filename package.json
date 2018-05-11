@@ -1,0 +1,32 @@
+{
+  "name": "aristovcenter",
+  "version": "0.0.1",
+  "description": "Architect workshop of Vyacheslav Aristov",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aristov/aristovcenter.git"
+  },
+  "keywords": [
+    "Architect",
+    "Workshop",
+    "Aristov"
+  ],
+  "author": "Vyacheslav Aristov <vv.aristov@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aristov/aristovcenter/issues"
+  },
+  "homepage": "https://github.com/aristov/aristovcenter#readme",
+  "devDependencies": {
+    "ariamodule": "github:aristov/ariamodule#v0.2",
+    "htmlmodule": "github:aristov/htmlmodule#v0.6",
+    "raw-loader": "^0.5.1",
+    "webpack": "^4.8.1",
+    "webpack-cli": "^2.1.3"
+  }
+}

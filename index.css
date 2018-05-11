@@ -215,7 +215,7 @@ details summary::-webkit-details-marker
 }
 details summary::after
 {
-    content: url(graphics/closebutton.svg);
+    content: url(src/graphics/closebutton.svg);
     position: absolute;
     top: 12px;
     right: 12px;
