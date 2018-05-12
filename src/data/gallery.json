@@ -1,0 +1,120 @@
+[
+  {
+    "title": "Московский индустриальный банк",
+    "description": "<p>Зеленоградский филиал на&nbsp;Панфиловском проспекте в&nbsp;Зеленограде.</p><p>1993 — 1995 / проект 1991 — 1993</p>",
+    "items": [
+      {
+        "url": "media/bank/helicopter-crop.jpg",
+        "bg": "#fff",
+        "className": "white"
+      },
+      {
+        "url": "media/bank/front2.jpg",
+        "bg": "#202a33"
+      },
+      {
+        "url": "media/bank/left5.jpg"
+      },
+      {
+        "url": "media/bank/stair.jpg",
+        "bg": "#000"
+      },
+      {
+        "url": "media/bank/front6.jpg"
+      },
+      {
+        "url": "media/bank/left1.jpg",
+        "bg": "#000"
+      },
+      {
+        "url": "media/bank/right1.jpg"
+      },
+      {
+        "url": "media/bank/back2-crop.jpg",
+        "bg": "#1f1a16"
+      }
+    ]
+  },
+  {
+    "title": "«Дом без окон, без дверей»",
+    "description": "<p>Центр современной архитектуры и искусства.</p><p>Проект.</p>",
+    "items": [
+      {
+        "url": "media/center/figure-3.jpg",
+        "bg": "#000"
+      },
+      {
+        "url": "media/center/figure.svg"
+      },
+      {
+        "url": "media/center/figure-1.jpg",
+        "bg": "#000"
+      },
+      {
+        "url": "media/center/draw.jpg",
+        "bg": "#161f01"
+      },
+      {
+        "url": "media/center/figure-2.jpg",
+        "bg": "#000"
+      },
+      {
+        "url": "media/center/model.jpg",
+        "bg": "#fff",
+        "className": "white"
+      }
+    ]
+  },
+  {
+    "title": "«Планит»",
+    "description": "<p>Многоэтажный гараж-стоянка с&nbsp;офисными помещениями.</p><p>Проект.</p>",
+    "items": [
+      {
+        "url": "media/planit/masterplan.jpg",
+        "bg": "#000"
+      },
+      {
+        "url": "media/planit/front.jpg"
+      },
+      {
+        "url": "media/planit/axonometry-2.jpg",
+        "bg": "#fff",
+        "className": "white"
+      },
+      {
+        "url": "media/planit/fragment.jpg"
+      },
+      {
+        "url": "media/planit/axonometry-1.jpg",
+        "bg": "#788770"
+      },
+      {
+        "url": "media/planit/sideright.jpg"
+      },
+      {
+        "url": "media/planit/scheme.jpg",
+        "bg": "#fff",
+        "className": "white"
+      },
+      {
+        "url": "media/planit/sideleft.jpg"
+      },
+      {
+        "url": "media/planit/axonometry-3.jpg",
+        "bg": "#bcc7c1",
+        "className": "white"
+      },
+      {
+        "url": "media/planit/back.jpg"
+      },
+      {
+        "url": "media/planit/crosssection.jpg",
+        "bg": "#fff",
+        "className": "white"
+      },
+      {
+        "url": "media/planit/montage.jpg"
+      }
+    ]
+  }
+]

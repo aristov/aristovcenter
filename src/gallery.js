@@ -6,6 +6,8 @@ import { Summary } from 'htmlmodule/lib/summary'
 import { P } from 'htmlmodule/lib/p'
 import { Group } from 'ariamodule/lib/group'
 import { NextAlbum, NextSlide, PrevAlbum, PrevSlide } from './navbutton'
+import { Slide } from './slide'
+import data from './data/gallery'
 
 export class Gallery extends Div {
     init(init) {
@@ -14,27 +16,23 @@ export class Gallery extends Div {
         this.children = [
             new PrevAlbum(),
             new PrevSlide(),
-            new Group([
-                new Article,
-                new Article([
+            new Group(data.map(album => {
+                return new Article([
                     new Details([
-                        new Summary('«Дом без окон, без дверей»'),
-                        new P('Центр современной архитектуры и искусства.'),
-                        new P('Проект.')
+                        new Summary(album.title),
+                        new Div({ innerHTML : album.description })
                     ]),
-                    new Figure({
-                        dataset : { bg : '#000' },
-                        style : { backgroundImage : 'url("media/center/figure-3.jpg")' }
-                    }),
-                    new Figure({
-                        style : { backgroundImage : 'url("media/center/figure.svg")' }
-                    }),
-                    new Figure({
-                        dataset : { bg : '#000' },
-                        style : { backgroundImage : 'url("media/center/figure-1.jpg")' }
+                    album.items.map(item => {
+                        return new Figure({
+                            style : { backgroundImage : `url(${ item.url })` },
+                            dataset : {
+                                bg : item.bg,
+                                className : item.className
+                            }
+                        })
                     })
                 ])
-            ]),
+            })),
             new NextAlbum(),
             new NextSlide(),
         ]
