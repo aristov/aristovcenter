@@ -21,10 +21,11 @@ export class Gallery extends Div {
             new NextAlbum({ onclick : event => this.nextAlbum() }),
         ]
         this.data = gallery
+        this.on('albumready', event => this.createAlbum())
         this.on('slideready', this.onSlideReady = this.onSlideReady.bind(this))
-        this.on('albumready', this.onAlbumReady.bind(this))
-        this.on('switch', this.onSwitch.bind(this))
+        this.on('switch', event => this.applyTheme())
         this.on('touchstart', this.onTouchStart.bind(this))
+        this.on('transitionend', event => this.transition = false)
         document.addEventListener('click', this.onClick.bind(this))
         document.addEventListener('keydown', this.onKeyDown.bind(this))
     }
@@ -61,7 +62,7 @@ export class Gallery extends Div {
 
     nextAlbum() {
         const next = this.find(Album, '[data-position=next]')
-        if(next) {
+        if(next && !this.transition) {
             const prev = this.find(Album, '[data-position=prev]')
             const nextNext = next.next
             if(prev) {
@@ -70,12 +71,13 @@ export class Gallery extends Div {
             this.currentAlbum.position = 'prev'
             next.position = 'current'
             if(nextNext === prev) {
-                prev.style.display = 'none'
+                prev.style.transition = 'none'
                 prev.position = 'next'
-                setTimeout(() => prev.style.display = '', 0)
+                setTimeout(() => prev.style.transition = '', 500)
             }
             else nextNext.position = 'next'
             this.applyTheme()
+            this.transition = true
             return next
         }
         return null
@@ -83,10 +85,6 @@ export class Gallery extends Div {
 
     nextSlide() {
         return this.currentAlbum.nextSlide()
-    }
-
-    onAlbumReady(event) {
-        this.createAlbum()
     }
 
     onClick(event) {
@@ -113,10 +111,6 @@ export class Gallery extends Div {
         this.un('slideready', this.onSlideReady)
         this.getInstanceOf(document.body, Body).busy = false
         this.live = 'assertive'
-    }
-
-    onSwitch(event) {
-        this.applyTheme()
     }
 
     onTouchStart(event) {
@@ -148,7 +142,7 @@ export class Gallery extends Div {
 
     prevAlbum() {
         const prev = this.find(Album, '[data-position=prev]')
-        if(prev) {
+        if(prev && !this.transition) {
             const next = this.find(Album, '[data-position=next]')
             const prevPrev = prev.prev
             if(next) {
@@ -157,11 +151,12 @@ export class Gallery extends Div {
             this.currentAlbum.position = 'next'
             prev.position = 'current'
             if(prevPrev === next) {
-                next.style.display = 'none'
+                next.style.transition = 'none'
                 next.position = 'prev'
-                setTimeout(() => next.style.display = '', 0)
+                setTimeout(() => next.style.transition = '', 500)
             }
             else prevPrev.position = 'prev'
+            this.transition = true
             this.applyTheme()
         }
     }
@@ -208,5 +203,13 @@ export class Gallery extends Div {
 
     get live() {
         return super.live || 'off'
+    }
+
+    set transition(transition) {
+        this.classList.toggle('transition', transition)
+    }
+
+    get transition() {
+        return this.classList.contains('transition')
     }
 }

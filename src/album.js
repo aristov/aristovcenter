@@ -7,7 +7,8 @@ export class Album extends Article {
     init(init) {
         super.init(init)
         this.classList.add('album')
-        this.on('slideready', this.onSlideReady.bind(this))
+        this.on('slideready', event => this.createSlide())
+        this.on('transitionend', event => this.transition = false)
         document.addEventListener('keydown', this.onKeyDown.bind(this))
     }
 
@@ -36,7 +37,7 @@ export class Album extends Article {
 
     nextSlide() {
         const next = this.find(Slide, '[data-position=next]')
-        if(next && !next.busy) {
+        if(next && !next.busy && !this.transition) {
             const prev = this.find(Slide, '[data-position=prev]')
             const current = this.find(Slide, '[data-position=current]')
             if(prev) {
@@ -46,6 +47,7 @@ export class Album extends Article {
             next.position = 'current'
             next.next.position = 'next'
             this.emit('switch', { bubbles : true })
+            this.transition = true
             return next
         }
         return null
@@ -63,13 +65,9 @@ export class Album extends Article {
         }
     }
 
-    onSlideReady(event) {
-        this.createSlide()
-    }
-
     prevSlide() {
         const prev = this.find(Slide, '[data-position=prev]')
-        if(prev && !prev.busy) {
+        if(prev && !prev.busy && !this.transition) {
             const current = this.find(Slide, '[data-position=current]')
             const next = this.find(Slide, '[data-position=next]')
             if(next) {
@@ -79,6 +77,7 @@ export class Album extends Article {
             prev.position = 'current'
             prev.prev.position = 'prev'
             this.emit('switch', { bubbles : true })
+            this.transition = true
             return prev
         }
         return null
@@ -116,5 +115,13 @@ export class Album extends Article {
 
     get prev() {
         return this.previousElementSibling || this.parentElement.lastElementChild
+    }
+
+    set transition(transition) {
+        this.classList.toggle('transition', transition)
+    }
+
+    get transition() {
+        return this.classList.contains('transition')
     }
 }
