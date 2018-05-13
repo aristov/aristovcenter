@@ -4,11 +4,6 @@
     "description": "<p>Зеленоградский филиал на&nbsp;Панфиловском проспекте в&nbsp;Зеленограде.</p><p>1993 — 1995 / проект 1991 — 1993</p>",
     "items": [
       {
-        "url": "media/bank/helicopter-crop.jpg",
-        "bg": "#fff",
-        "className": "white"
-      },
-      {
         "url": "media/bank/front2.jpg",
         "bg": "#202a33"
       },
@@ -32,6 +27,11 @@
       {
         "url": "media/bank/back2-crop.jpg",
         "bg": "#1f1a16"
+      },
+      {
+        "url": "media/bank/helicopter-crop.jpg",
+        "bg": "#fff",
+        "className": "white"
       }
     ]
   },
@@ -39,10 +39,6 @@
     "title": "«Дом без окон, без дверей»",
     "description": "<p>Центр современной архитектуры и искусства.</p><p>Проект.</p>",
     "items": [
-      {
-        "url": "media/center/figure-3.jpg",
-        "bg": "#000"
-      },
       {
         "url": "media/center/figure.svg"
       },
@@ -62,6 +58,10 @@
         "url": "media/center/model.jpg",
         "bg": "#fff",
         "className": "white"
+      },
+      {
+        "url": "media/center/figure-3.jpg",
+        "bg": "#000"
       }
     ]
   },
@@ -69,10 +69,6 @@
     "title": "«Планит»",
     "description": "<p>Многоэтажный гараж-стоянка с&nbsp;офисными помещениями.</p><p>Проект.</p>",
     "items": [
-      {
-        "url": "media/planit/masterplan.jpg",
-        "bg": "#000"
-      },
       {
         "url": "media/planit/front.jpg"
       },
@@ -114,6 +110,10 @@
       },
       {
         "url": "media/planit/montage.jpg"
+      },
+      {
+        "url": "media/planit/masterplan.jpg",
+        "bg": "#000"
       }
     ]
   }
