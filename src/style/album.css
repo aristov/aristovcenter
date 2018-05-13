@@ -1,13 +1,16 @@
 .album
 {
+    position: absolute;
     display: none;
+    width: 100%;
+    height: 100%;
+    transition: top .7s;
 }
 .album[data-position=prev],
 .album[data-position=current],
 .album[data-position=next]
 {
     display: block;
-    opacity: 0;
 }
 .album[data-position=prev]
 {

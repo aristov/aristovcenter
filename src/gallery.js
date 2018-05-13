@@ -63,12 +63,18 @@ export class Gallery extends Div {
         const next = this.find(Album, '[data-position=next]')
         if(next) {
             const prev = this.find(Album, '[data-position=prev]')
+            const nextNext = next.next
             if(prev) {
                 prev.position = ''
             }
             this.currentAlbum.position = 'prev'
             next.position = 'current'
-            next.next.position = 'next'
+            if(nextNext === prev) {
+                prev.style.display = 'none'
+                prev.position = 'next'
+                setTimeout(() => prev.style.display = '', 0)
+            }
+            else nextNext.position = 'next'
             this.applyTheme()
             return next
         }
@@ -105,7 +111,7 @@ export class Gallery extends Div {
 
     onSlideReady(event) {
         this.un('slideready', this.onSlideReady)
-        this.getInstanceOf(document.body, Body).busy = 'false'
+        this.getInstanceOf(document.body, Body).busy = false
         this.live = 'assertive'
     }
 
@@ -144,12 +150,18 @@ export class Gallery extends Div {
         const prev = this.find(Album, '[data-position=prev]')
         if(prev) {
             const next = this.find(Album, '[data-position=next]')
+            const prevPrev = prev.prev
             if(next) {
                 next.position = ''
             }
             this.currentAlbum.position = 'next'
             prev.position = 'current'
-            prev.prev.position = 'prev'
+            if(prevPrev === next) {
+                next.style.display = 'none'
+                next.position = 'prev'
+                setTimeout(() => next.style.display = '', 0)
+            }
+            else prevPrev.position = 'prev'
             this.applyTheme()
         }
     }
