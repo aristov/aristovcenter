@@ -1,0 +1,60 @@
+.albuminfo
+{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: -12px;
+    transition: background-color .3s, top .3s, opacity 1s;
+    z-index: 2;
+}
+.albuminfo summary
+{
+    font-weight: bold;
+    padding: 12px;
+    margin-bottom: -12px;
+    cursor: pointer;
+    outline: none;
+    transition: opacity .3s;
+}
+.albuminfo summary::-webkit-details-marker
+{
+    display: none;
+}
+.albuminfo summary::after
+{
+    content: url(../graphics/closebutton.svg);
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+.albuminfo summary:not(:hover)::after
+{
+    opacity: .5;
+}
+.albuminfo:not([open]) summary:not(:hover)
+{
+    opacity: .8;
+}
+.albuminfo:not([open]) summary::after
+{
+    display: none;
+}
+.albuminfo summary + p
+{
+    margin-top: 4px;
+}
+.albuminfo p
+{
+    transition: opacity .3s;
+}
+.albuminfo:not([open]) p
+{
+    opacity: 0;
+}
+.albuminfo[open]
+{
+    color: rgba(0, 0, 0, .8);
+    top: 0;
+    background-color: #fff;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .2);
+}

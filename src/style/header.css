@@ -1,0 +1,35 @@
+header
+{
+    font-size: 18px;
+    line-height: 1.5em;
+    letter-spacing: 7px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: top 1s;
+    z-index: 1;
+}
+header h1
+{
+    font: inherit;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0 44px;
+}
+header button
+{
+    position: absolute;
+    margin-top: -16px;
+    margin-left: -16px;
+    cursor: pointer;
+    padding: 20px;
+    border: none;
+    background: transparent;
+    transition: opacity .2s;
+}
+header button:not(:hover):not([aria-pressed=true])
+{
+    opacity: .5;
+}

@@ -1,0 +1,31 @@
+.album
+{
+    display: none;
+}
+.album[data-position=prev],
+.album[data-position=current],
+.album[data-position=next]
+{
+    display: block;
+    opacity: 0;
+}
+.album[data-position=prev]
+{
+    top: calc(-100% - 120px);
+}
+.album[data-position=current]
+{
+    top: 0;
+    opacity: 1;
+}
+.album[data-position=next]
+{
+    top: calc(100% + 50px);
+}
+.album > .group
+{
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    bottom: 0;
+}

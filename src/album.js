@@ -6,6 +6,7 @@ import { Slide } from './slide'
 export class Album extends Article {
     init(init) {
         super.init(init)
+        this.classList.add('album')
         document.addEventListener('keydown', this.onKeyDown.bind(this))
     }
 
@@ -28,6 +29,7 @@ export class Album extends Article {
                 }
             })
         }
+        else this.emit('ready')
     }
 
     nextSlide() {
@@ -45,12 +47,14 @@ export class Album extends Article {
     }
 
     onKeyDown(event) {
-        const key = event.key
-        if(key === 'ArrowRight') {
-            this.nextSlide()
-        }
-        else if(key === 'ArrowLeft') {
-            this.prevSlide()
+        if(this.position === 'current') {
+            const key = event.key
+            if(key === 'ArrowRight') {
+                this.nextSlide()
+            }
+            else if(key === 'ArrowLeft') {
+                this.prevSlide()
+            }
         }
     }
 
@@ -71,14 +75,37 @@ export class Album extends Article {
     set data(data) {
         this._items = data.items
         this.children = [
-            new Details([
-                new Summary(data.title),
-                new Div({ innerHTML : data.description })
-            ]),
+            new Details({
+                classList : 'albuminfo',
+                children : [
+                    new Summary(data.title),
+                    new Div({ innerHTML : data.description })
+                ]
+            }),
             new PrevSlide({ onclick : event => this.prevSlide() }),
             this._group = new Group,
             new NextSlide({ onclick : event => this.nextSlide() })
         ]
         this.createSlide()
+    }
+
+    get next() {
+        return this.nextElementSibling || this.parentElement.firstElementChild
+    }
+
+    set onready(onready) {
+        this.on('ready', onready)
+    }
+
+    set position(position) {
+        this.dataset.position = position
+    }
+
+    get position() {
+        return this.dataset.position
+    }
+
+    get prev() {
+        return this.previousElementSibling || this.parentElement.lastElementChild
     }
 }

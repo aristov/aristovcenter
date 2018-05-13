@@ -1,0 +1,30 @@
+.slide
+{
+    position: absolute;
+    display: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: center center / contain no-repeat;
+    transition: left .7s, opacity .7s;
+}
+.slide[data-position=current],
+.slide[data-position=prev],
+.slide[data-position=next]
+{
+    display: block;
+    opacity: 0;
+}
+.slide[data-position=prev]
+{
+    left: -100%;
+}
+.slide[data-position=current]
+{
+    left: 0;
+    opacity: 1;
+}
+.slide[data-position=next]
+{
+    left: 100%;
+}

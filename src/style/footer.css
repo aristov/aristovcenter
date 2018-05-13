@@ -1,0 +1,17 @@
+footer
+{
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    box-sizing: border-box;
+    opacity: .6;
+    transition: bottom 1s;
+    z-index: 2;
+}
+footer a:not(:hover)
+{
+    text-decoration: none;
+}

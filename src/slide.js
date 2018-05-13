@@ -4,8 +4,9 @@ const transparent = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAAL
 
 export class Slide extends Img {
     init(init) {
-        this.on('load', this.onLoad = this.onLoad.bind(this))
         super.init(init)
+        this.classList.add('slide')
+        this.on('load', this.onLoad = this.onLoad.bind(this))
     }
 
     onLoad(event) {

@@ -1,41 +1,5 @@
 [
   {
-    "title": "Московский индустриальный банк",
-    "description": "<p>Зеленоградский филиал на&nbsp;Панфиловском проспекте в&nbsp;Зеленограде.</p><p>1993 — 1995 / проект 1991 — 1993</p>",
-    "items": [
-      {
-        "url": "media/bank/front2.jpg",
-        "bg": "#202a33"
-      },
-      {
-        "url": "media/bank/left5.jpg"
-      },
-      {
-        "url": "media/bank/stair.jpg",
-        "bg": "#000"
-      },
-      {
-        "url": "media/bank/front6.jpg"
-      },
-      {
-        "url": "media/bank/left1.jpg",
-        "bg": "#000"
-      },
-      {
-        "url": "media/bank/right1.jpg"
-      },
-      {
-        "url": "media/bank/back2-crop.jpg",
-        "bg": "#1f1a16"
-      },
-      {
-        "url": "media/bank/helicopter-crop.jpg",
-        "bg": "#fff",
-        "className": "white"
-      }
-    ]
-  },
-  {
     "title": "«Дом без окон, без дверей»",
     "description": "<p>Центр современной архитектуры и искусства.</p><p>Проект.</p>",
     "items": [
@@ -114,6 +78,42 @@
       {
         "url": "media/planit/masterplan.jpg",
         "bg": "#000"
+      }
+    ]
+  },
+  {
+    "title": "Московский индустриальный банк",
+    "description": "<p>Зеленоградский филиал на&nbsp;Панфиловском проспекте в&nbsp;Зеленограде.</p><p>1993 — 1995 / проект 1991 — 1993</p>",
+    "items": [
+      {
+        "url": "media/bank/front2.jpg",
+        "bg": "#202a33"
+      },
+      {
+        "url": "media/bank/left5.jpg"
+      },
+      {
+        "url": "media/bank/stair.jpg",
+        "bg": "#000"
+      },
+      {
+        "url": "media/bank/front6.jpg"
+      },
+      {
+        "url": "media/bank/left1.jpg",
+        "bg": "#000"
+      },
+      {
+        "url": "media/bank/right1.jpg"
+      },
+      {
+        "url": "media/bank/back2-crop.jpg",
+        "bg": "#1f1a16"
+      },
+      {
+        "url": "media/bank/helicopter-crop.jpg",
+        "bg": "#fff",
+        "className": "white"
       }
     ]
   }

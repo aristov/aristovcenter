@@ -7,7 +7,7 @@ import arrowRightSvg from './graphics/arrow-right.svg'
 class NavButton extends Button {
     init(init) {
         super.init(init)
-        this.classList.add(this.constructor.name.toLowerCase())
+        this.classList.add('navbutton', this.constructor.name.toLowerCase())
     }
 }
 
