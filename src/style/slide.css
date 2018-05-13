@@ -28,3 +28,7 @@
 {
     left: 100%;
 }
+.slide[aria-busy=true]
+{
+    display: none;
+}

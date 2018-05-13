@@ -1,4 +1,4 @@
-import { Div } from 'htmlmodule'
+import { Body, Div } from 'htmlmodule'
 import { Group } from 'ariamodule/lib/group'
 import { Album } from './album'
 import { Slide } from './slide'
@@ -6,10 +6,12 @@ import { NextAlbum, PrevAlbum } from './navbutton'
 import gallery from './data/gallery'
 
 const body = document.body
+const DELAY = 5000
 
 export class Gallery extends Div {
     init(init) {
         super.init(init)
+        this._nextSlideIndex = 1
         this.classList = 'gallery'
         this.children = [
             new PrevAlbum({ onclick : event => this.prevAlbum() }),
@@ -17,7 +19,10 @@ export class Gallery extends Div {
             new NextAlbum({ onclick : event => this.nextAlbum() }),
         ]
         this.data = gallery
+        this.on('slideready', this.onSlideReady = this.onSlideReady.bind(this))
+        this.on('albumready', this.onAlbumReady.bind(this))
         this.on('switch', this.onSwitch.bind(this))
+        document.addEventListener('click', this.onClick.bind(this))
         document.addEventListener('keydown', this.onKeyDown.bind(this))
     }
 
@@ -36,19 +41,19 @@ export class Gallery extends Div {
         const item = items[index]
         if(item) {
             new Album({
+                parentElement : group,
                 data : item,
                 position : !index?
                     'current' :
                     index === 1?
                         'next' :
-                        index === items.length - 1? 'prev' : '',
-                onready : event => {
-                    group.append(event.target)
-                    this.createAlbum()
-                }
+                        index === items.length - 1? 'prev' : ''
             })
         }
-        else this.emit('ready')
+        else {
+            this.busy = false
+            this.emit('ready')
+        }
     }
 
     nextAlbum() {
@@ -74,6 +79,26 @@ export class Gallery extends Div {
         else if(key === 'ArrowUp') {
             this.prevAlbum()
         }
+        if(key.startsWith('Arrow')) {
+            this.live = 'off'
+        }
+    }
+
+    onAlbumReady(event) {
+        this.createAlbum()
+    }
+
+    onClick(event) {
+        const target = event.target
+        if(target.closest('button') || target.closest('details')) {
+            this.live = 'off'
+        }
+    }
+
+    onSlideReady(event) {
+        this.un('slideready', this.onSlideReady)
+        this.getInstanceOf(document.body, Body).busy = 'false'
+        this.live = 'assertive'
     }
 
     onSwitch(event) {
@@ -95,8 +120,40 @@ export class Gallery extends Div {
         }
     }
 
+    startTimer() {
+        setTimeout(() => {
+            if(this.live !== 'off') {
+                if(this._nextSlideIndex) {
+                    const album = this.find(Album, '[data-position=current]')
+                    const slide = album.nextSlide()
+                    if(slide) {
+                        this._nextSlideIndex = slide.elementIndex
+                    }
+                    this.startTimer()
+                }
+                else {
+                    this.nextAlbum()
+                    this._nextSlideIndex = 1
+                    this.startTimer()
+                }
+            }
+        }, DELAY)
+    }
+
     set data(data) {
         this._items = data
+        this.busy = true
         this.createAlbum()
+    }
+
+    set live(live) {
+        if(live !== 'off') {
+            this.startTimer()
+        }
+        super.live = live
+    }
+
+    get live() {
+        return super.live || 'off'
     }
 }

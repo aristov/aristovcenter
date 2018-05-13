@@ -1,4 +1,4 @@
-import { Img } from 'htmlmodule/lib/img'
+import { Img } from 'htmlmodule'
 
 const transparent = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
 
@@ -14,15 +14,11 @@ export class Slide extends Img {
         this.style.backgroundImage = `url(${ this.src })`
         this.node.src = transparent
         this.busy = false
-        this.emit('ready')
+        this.emit('slideready', { bubbles : true })
     }
 
     get next() {
         return this.nextElementSibling || this.parentElement.firstElementChild
-    }
-
-    set onready(onready) {
-        this.on('ready', onready)
     }
 
     set position(position) {

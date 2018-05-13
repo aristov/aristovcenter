@@ -7,6 +7,7 @@ export class Album extends Article {
     init(init) {
         super.init(init)
         this.classList.add('album')
+        this.on('slideready', this.onSlideReady.bind(this))
         document.addEventListener('keydown', this.onKeyDown.bind(this))
     }
 
@@ -17,27 +18,27 @@ export class Album extends Article {
         const item = items[index]
         if(item) {
             new Slide({
+                parentElement : group,
                 src : item.url,
                 dataset : item.theme,
                 position : !index?
                     'current' :
                     index === 1?
                         'next' :
-                        index === items.length - 1? 'prev' : '',
-                onready : event => {
-                    group.append(event.target)
-                    this.createSlide()
-                }
+                        index === items.length - 1? 'prev' : ''
             })
         }
-        else this.emit('ready')
+        else {
+            this.busy = false
+            this.emit('albumready', { bubbles : true })
+        }
     }
 
     nextSlide() {
-        const prev = this.find(Slide, '[data-position=prev]')
-        const current = this.find(Slide, '[data-position=current]')
         const next = this.find(Slide, '[data-position=next]')
-        if(next) {
+        if(next && !next.busy) {
+            const prev = this.find(Slide, '[data-position=prev]')
+            const current = this.find(Slide, '[data-position=current]')
             if(prev) {
                 prev.position = ''
             }
@@ -45,7 +46,9 @@ export class Album extends Article {
             next.position = 'current'
             next.next.position = 'next'
             this.emit('switch', { bubbles : true })
+            return next
         }
+        return null
     }
 
     onKeyDown(event) {
@@ -60,11 +63,15 @@ export class Album extends Article {
         }
     }
 
+    onSlideReady(event) {
+        this.createSlide()
+    }
+
     prevSlide() {
         const prev = this.find(Slide, '[data-position=prev]')
-        const current = this.find(Slide, '[data-position=current]')
-        const next = this.find(Slide, '[data-position=next]')
-        if(prev) {
+        if(prev && !prev.busy) {
+            const current = this.find(Slide, '[data-position=current]')
+            const next = this.find(Slide, '[data-position=next]')
             if(next) {
                 next.position = ''
             }
@@ -72,7 +79,9 @@ export class Album extends Article {
             prev.position = 'current'
             prev.prev.position = 'prev'
             this.emit('switch', { bubbles : true })
+            return prev
         }
+        return null
     }
 
     set data(data) {
@@ -89,15 +98,12 @@ export class Album extends Article {
             this._group = new Group,
             new NextSlide({ onclick : event => this.nextSlide() })
         ]
+        this.busy = true
         this.createSlide()
     }
 
     get next() {
         return this.nextElementSibling || this.parentElement.firstElementChild
-    }
-
-    set onready(onready) {
-        this.on('ready', onready)
     }
 
     set position(position) {
