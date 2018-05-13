@@ -16,8 +16,24 @@ export class Slide extends Img {
         this.emit('ready')
     }
 
+    get next() {
+        return this.nextElementSibling || this.parentElement.firstElementChild
+    }
+
     set onready(onready) {
         this.on('ready', onready)
+    }
+
+    set position(position) {
+        this.dataset.position = position
+    }
+
+    get position() {
+        return this.dataset.position
+    }
+
+    get prev() {
+        return this.previousElementSibling || this.parentElement.lastElementChild
     }
 
     set src(src) {

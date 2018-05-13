@@ -1,8 +1,8 @@
-import { Article, Details, Div, Summary } from 'htmlmodule'
+import { Div } from 'htmlmodule'
 import { Group } from 'ariamodule/lib/group'
-import { NextAlbum, NextSlide, PrevAlbum, PrevSlide } from './navbutton'
-import { Slide } from './slide'
-import data from './data/gallery'
+import { Album } from './album'
+import { NextAlbum, PrevAlbum } from './navbutton'
+import gallery from './data/gallery'
 
 export class Gallery extends Div {
     init(init) {
@@ -10,35 +10,8 @@ export class Gallery extends Div {
         this.classList = 'gallery'
         this.children = [
             new PrevAlbum(),
-            new PrevSlide(),
-            new Group(data.map(album => {
-                const group = new Group
-                const slide = new Slide({
-                    src : album.items[0].url,
-                    current : 'true',
-                    onready : event => {
-                        slide.parentElement = group
-                    }
-                })
-                return new Article([
-                    new Details([
-                        new Summary(album.title),
-                        new Div({ innerHTML : album.description })
-                    ]),
-                    group
-                    /*new Group(album.items.map(item => {
-                        return new Figure({
-                            style : { backgroundImage : `url(${ item.url })` },
-                            dataset : {
-                                bg : item.bg,
-                                className : item.className
-                            }
-                        })
-                    }))*/
-                ])
-            })),
+            new Group(gallery.map(data => new Album({ data }))),
             new NextAlbum(),
-            new NextSlide(),
         ]
     }
 }

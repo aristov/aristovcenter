@@ -264,25 +264,27 @@ figure,
     background: center center / contain no-repeat;
     transition: left .7s;
 }
-.gallery img[aria-current=true]
+figure:nth-of-type(1),
+figure:nth-of-type(2),
+figure:nth-of-type(3),
+.gallery img[data-position=current],
+.gallery img[data-position=prev],
+.gallery img[data-position=next]
 {
     display: block;
 }
 figure:nth-of-type(1),
-figure:nth-of-type(2),
-figure:nth-of-type(3)
-{
-    display: block;
-}
-figure:nth-of-type(1)
+.gallery img[data-position=prev]
 {
     left: -100%;
 }
-figure:nth-of-type(2)
+figure:nth-of-type(2),
+.gallery img[data-position=current]
 {
     left: 0;
 }
-figure:nth-of-type(3)
+figure:nth-of-type(3),
+.gallery img[data-position=next]
 {
     left: 100%;
 }
