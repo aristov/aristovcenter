@@ -6,7 +6,7 @@
     height: 100%;
     margin: 0;
     background: center center / contain no-repeat;
-    transition: left .7s, opacity .7s;
+    transition: left .7s, opacity .7s, transform .7s;
 }
 .slide[data-position=current],
 .slide[data-position=prev],
@@ -18,6 +18,7 @@
 .slide[data-position=prev]
 {
     left: -100%;
+    transform: translateZ(-50px);
 }
 .slide[data-position=current]
 {
@@ -27,6 +28,7 @@
 .slide[data-position=next]
 {
     left: 100%;
+    transform: translateZ(-50px);
 }
 .slide[aria-busy=true]
 {
