@@ -6,7 +6,9 @@ import { NextAlbum, PrevAlbum } from './navbutton'
 import gallery from './data/gallery'
 
 const body = document.body
-const DELAY = 5000
+const SLIDESHOW_DELAY = 5000
+const TOUCH_DISTANCE_THRESHOLD = 50
+const TOUCH_INTERVAL = 500
 
 export class Gallery extends Div {
     init(init) {
@@ -22,6 +24,7 @@ export class Gallery extends Div {
         this.on('slideready', this.onSlideReady = this.onSlideReady.bind(this))
         this.on('albumready', this.onAlbumReady.bind(this))
         this.on('switch', this.onSwitch.bind(this))
+        this.on('touchstart', this.onTouchStart.bind(this))
         document.addEventListener('click', this.onClick.bind(this))
         document.addEventListener('keydown', this.onKeyDown.bind(this))
     }
@@ -57,17 +60,33 @@ export class Gallery extends Div {
     }
 
     nextAlbum() {
-        const prev = this.find(Album, '[data-position=prev]')
-        const current = this.find(Album, '[data-position=current]')
         const next = this.find(Album, '[data-position=next]')
         if(next) {
+            const prev = this.find(Album, '[data-position=prev]')
             if(prev) {
                 prev.position = ''
             }
-            current.position = 'prev'
+            this.currentAlbum.position = 'prev'
             next.position = 'current'
             next.next.position = 'next'
             this.applyTheme()
+            return next
+        }
+        return null
+    }
+
+    nextSlide() {
+        return this.currentAlbum.nextSlide()
+    }
+
+    onAlbumReady(event) {
+        this.createAlbum()
+    }
+
+    onClick(event) {
+        const target = event.target
+        if(target.closest('button') || target.closest('details')) {
+            this.live = 'off'
         }
     }
 
@@ -84,17 +103,6 @@ export class Gallery extends Div {
         }
     }
 
-    onAlbumReady(event) {
-        this.createAlbum()
-    }
-
-    onClick(event) {
-        const target = event.target
-        if(target.closest('button') || target.closest('details')) {
-            this.live = 'off'
-        }
-    }
-
     onSlideReady(event) {
         this.un('slideready', this.onSlideReady)
         this.getInstanceOf(document.body, Body).busy = 'false'
@@ -105,27 +113,56 @@ export class Gallery extends Div {
         this.applyTheme()
     }
 
+    onTouchStart(event) {
+        const { clientX : startX, clientY : startY } = event.changedTouches[0]
+        const timeStamp = Date.now()
+        this.node.ontouchend = event => {
+            if(timeStamp + TOUCH_INTERVAL > Date.now()) {
+                const { clientX : endX, clientY : endY } = event.changedTouches[0]
+                if(endX > startX + TOUCH_DISTANCE_THRESHOLD) {
+                    this.prevSlide()
+                    this.live = 'off'
+                }
+                else if(startX > endX + TOUCH_DISTANCE_THRESHOLD) {
+                    this.nextSlide()
+                    this.live = 'off'
+                }
+                else if(endY > startY + TOUCH_DISTANCE_THRESHOLD) {
+                    this.prevAlbum()
+                    this.live = 'off'
+                }
+                else if(startY > endY + TOUCH_DISTANCE_THRESHOLD) {
+                    this.nextAlbum()
+                    this.live = 'off'
+                }
+            }
+            this.node.ontouchend = null
+        }
+    }
+
     prevAlbum() {
         const prev = this.find(Album, '[data-position=prev]')
-        const current = this.find(Album, '[data-position=current]')
-        const next = this.find(Album, '[data-position=next]')
         if(prev) {
+            const next = this.find(Album, '[data-position=next]')
             if(next) {
                 next.position = ''
             }
-            current.position = 'next'
+            this.currentAlbum.position = 'next'
             prev.position = 'current'
             prev.prev.position = 'prev'
             this.applyTheme()
         }
     }
 
+    prevSlide() {
+        return this.currentAlbum.prevSlide()
+    }
+
     startTimer() {
         setTimeout(() => {
             if(this.live !== 'off') {
                 if(this._nextSlideIndex) {
-                    const album = this.find(Album, '[data-position=current]')
-                    const slide = album.nextSlide()
+                    const slide = this.nextSlide()
                     if(slide) {
                         this._nextSlideIndex = slide.elementIndex
                     }
@@ -137,7 +174,11 @@ export class Gallery extends Div {
                     this.startTimer()
                 }
             }
-        }, DELAY)
+        }, SLIDESHOW_DELAY)
+    }
+
+    get currentAlbum() {
+        return this.find(Album, '[data-position=current]')
     }
 
     set data(data) {
