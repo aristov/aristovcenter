@@ -164,7 +164,7 @@ article:nth-of-type(2) figure:nth-of-type(2) > [role=presentation]
     white-space: nowrap;
 }
 .gallery,
-.group
+.gallery > .group
 {
     position: absolute;
     width: 100%;
@@ -252,14 +252,20 @@ details[open]
     background-color: #fff;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .2);
 }
+article > .group
+{
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    bottom: 0;
+}
 figure,
 .gallery img
 {
     position: absolute;
-    top: 30px;
-    bottom: 0;
     display: none;
     width: 100%;
+    height: 100%;
     margin: 0;
     background: center center / contain no-repeat;
     transition: left .7s;

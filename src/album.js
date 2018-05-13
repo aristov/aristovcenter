@@ -15,7 +15,7 @@ export class Album extends Article {
         const items = this._items
         const item = items[index]
         if(item) {
-            const slide = new Slide({
+            new Slide({
                 src : item.url,
                 position : !index?
                     'current' :
@@ -23,7 +23,7 @@ export class Album extends Article {
                         'next' :
                         index === items.length - 1? 'prev' : '',
                 onready : event => {
-                    slide.parentElement = group
+                    group.append(event.target)
                     this.createSlide()
                 }
             })
@@ -71,11 +71,11 @@ export class Album extends Article {
     set data(data) {
         this._items = data.items
         this.children = [
-            new PrevSlide({ onclick : event => this.prevSlide() }),
             new Details([
                 new Summary(data.title),
                 new Div({ innerHTML : data.description })
             ]),
+            new PrevSlide({ onclick : event => this.prevSlide() }),
             this._group = new Group,
             new NextSlide({ onclick : event => this.nextSlide() })
         ]
