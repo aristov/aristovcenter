@@ -1,8 +1,10 @@
 import { Button } from 'htmlmodule'
+import menuButtonSvg from './graphics/menubutton.svg'
 
 export class MenuButton extends Button {
     init(init) {
         super.init(init)
+        this.innerHTML = menuButtonSvg
         this.on('click', this.onClick.bind(this))
     }
 

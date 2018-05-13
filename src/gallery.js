@@ -1,18 +1,33 @@
-import { Body, Div } from 'htmlmodule'
+import { Body, Div, NoScript } from 'htmlmodule'
 import { Group } from 'ariamodule/lib/group'
 import { Album } from './album'
 import { Slide } from './slide'
 import { NextAlbum, PrevAlbum } from './navbutton'
-import gallery from './data/gallery'
+// import gallery from './data/gallery'
 
-const body = document.body
 const SLIDESHOW_DELAY = 5000
 const TOUCH_DISTANCE_THRESHOLD = 50
 const TOUCH_INTERVAL = 500
 
+const body = document.body
+const parser = new DOMParser
+
 export class Gallery extends Div {
+    create(init) {
+        if(init && init.constructor === Object && init.hasOwnProperty('selector')) {
+            this.node = document.querySelector(init.selector)
+        }
+        else super.create(init)
+    }
+
+    setProperty(name, value) {
+        if(name !== 'selector') {
+            super.setProperty(name, value)
+        }
+    }
+
     init(init) {
-        super.init(init)
+        const data = this.find(NoScript).textContent
         this._nextSlideIndex = 1
         this.classList = 'gallery'
         this.children = [
@@ -20,7 +35,7 @@ export class Gallery extends Div {
             this._group = new Group,
             new NextAlbum({ onclick : event => this.nextAlbum() }),
         ]
-        this.data = gallery
+        this.data = data
         this.on('albumready', event => this.createAlbum())
         this.on('slideready', this.onSlideReady = this.onSlideReady.bind(this))
         this.on('switch', event => this.applyTheme())
@@ -28,6 +43,7 @@ export class Gallery extends Div {
         this.on('transitionend', event => this.transition = false)
         document.addEventListener('click', this.onClick.bind(this))
         document.addEventListener('keydown', this.onKeyDown.bind(this))
+        super.init(init)
     }
 
     applyTheme() {
@@ -189,7 +205,8 @@ export class Gallery extends Div {
     }
 
     set data(data) {
-        this._items = data
+        const dom = parser.parseFromString(data, 'text/html')
+        this._items = dom.querySelectorAll('article')
         this.busy = true
         this.createAlbum()
     }

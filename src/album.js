@@ -20,8 +20,9 @@ export class Album extends Article {
         if(item) {
             new Slide({
                 parentElement : group,
-                src : item.url,
-                dataset : item.theme,
+                alt : item.innerText,
+                src : item.href,
+                dataset : item.dataset,
                 position : !index?
                     'current' :
                     index === 1?
@@ -84,13 +85,13 @@ export class Album extends Article {
     }
 
     set data(data) {
-        this._items = data.items
+        this._items = data.querySelectorAll('a')
         this.children = [
             this._details = new Details({
                 classList : 'albuminfo',
                 children : [
-                    new Summary(data.title),
-                    new Div({ innerHTML : data.description })
+                    new Summary(data.querySelector('h1').innerText),
+                    new Div(Array.from(data.querySelectorAll('p')))
                 ]
             }),
             new PrevSlide({ onclick : event => this.prevSlide() }),
