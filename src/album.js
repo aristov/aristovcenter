@@ -18,6 +18,7 @@ export class Album extends Article {
         if(item) {
             new Slide({
                 src : item.url,
+                dataset : item.theme,
                 position : !index?
                     'current' :
                     index === 1?
@@ -43,6 +44,7 @@ export class Album extends Article {
             current.position = 'prev'
             next.position = 'current'
             next.next.position = 'next'
+            this.emit('switch', { bubbles : true })
         }
     }
 
@@ -69,6 +71,7 @@ export class Album extends Article {
             current.position = 'next'
             prev.position = 'current'
             prev.prev.position = 'prev'
+            this.emit('switch', { bubbles : true })
         }
     }
 

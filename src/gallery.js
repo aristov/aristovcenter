@@ -1,8 +1,11 @@
 import { Div } from 'htmlmodule'
 import { Group } from 'ariamodule/lib/group'
 import { Album } from './album'
+import { Slide } from './slide'
 import { NextAlbum, PrevAlbum } from './navbutton'
 import gallery from './data/gallery'
+
+const body = document.body
 
 export class Gallery extends Div {
     init(init) {
@@ -14,7 +17,16 @@ export class Gallery extends Div {
             new NextAlbum({ onclick : event => this.nextAlbum() }),
         ]
         this.data = gallery
+        this.on('switch', this.onSwitch.bind(this))
         document.addEventListener('keydown', this.onKeyDown.bind(this))
+    }
+
+    applyTheme() {
+        const album = this.find(Album, '[data-position=current]')
+        const slide = album.find(Slide, '[data-position=current]')
+        const { background, content } = slide.dataset
+        body.style.backgroundColor = background || ''
+        body.className = content || ''
     }
 
     createAlbum() {
@@ -50,6 +62,7 @@ export class Gallery extends Div {
             current.position = 'prev'
             next.position = 'current'
             next.next.position = 'next'
+            this.applyTheme()
         }
     }
 
@@ -63,6 +76,10 @@ export class Gallery extends Div {
         }
     }
 
+    onSwitch(event) {
+        this.applyTheme()
+    }
+
     prevAlbum() {
         const prev = this.find(Album, '[data-position=prev]')
         const current = this.find(Album, '[data-position=current]')
@@ -74,6 +91,7 @@ export class Gallery extends Div {
             current.position = 'next'
             prev.position = 'current'
             prev.prev.position = 'prev'
+            this.applyTheme()
         }
     }
 

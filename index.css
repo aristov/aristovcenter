@@ -58,11 +58,11 @@ article
     width: 100%;
     height: 100%;
 }
-body.white
+body.dark
 {
     color: #000;
 }
-body.white button path
+body.dark button path
 {
     stroke: #000;
     fill: #000;

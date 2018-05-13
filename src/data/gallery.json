@@ -8,24 +8,34 @@
       },
       {
         "url": "media/center/figure-1.jpg",
-        "bg": "#000"
+        "theme" : {
+          "background": "#000"
+        }
       },
       {
         "url": "media/center/draw.jpg",
-        "bg": "#161f01"
+        "theme" : {
+          "background": "#161f01"
+        }
       },
       {
         "url": "media/center/figure-2.jpg",
-        "bg": "#000"
+        "theme" : {
+          "background": "#000"
+        }
       },
       {
         "url": "media/center/model.jpg",
-        "bg": "#fff",
-        "className": "white"
+        "theme" : {
+          "background": "#fff",
+          "content": "dark"
+        }
       },
       {
         "url": "media/center/figure-3.jpg",
-        "bg": "#000"
+        "theme" : {
+          "background": "#000"
+        }
       }
     ]
   },
@@ -38,46 +48,58 @@
       },
       {
         "url": "media/planit/axonometry-2.jpg",
-        "bg": "#fff",
-        "className": "white"
+        "theme" : {
+          "background": "#fff",
+          "content": "dark"
+        }
       },
       {
         "url": "media/planit/fragment.jpg"
       },
       {
         "url": "media/planit/axonometry-1.jpg",
-        "bg": "#788770"
+        "theme" : {
+          "background": "#788770"
+        }
       },
       {
         "url": "media/planit/sideright.jpg"
       },
       {
         "url": "media/planit/scheme.jpg",
-        "bg": "#fff",
-        "className": "white"
+        "theme" : {
+          "background": "#fff",
+          "content": "dark"
+        }
       },
       {
         "url": "media/planit/sideleft.jpg"
       },
       {
         "url": "media/planit/axonometry-3.jpg",
-        "bg": "#bcc7c1",
-        "className": "white"
+        "theme" : {
+          "background": "#bcc7c1",
+          "content": "dark"
+        }
       },
       {
         "url": "media/planit/back.jpg"
       },
       {
         "url": "media/planit/crosssection.jpg",
-        "bg": "#fff",
-        "className": "white"
+        "theme" : {
+          "background": "#fff",
+          "content": "dark"
+        }
       },
       {
         "url": "media/planit/montage.jpg"
       },
       {
         "url": "media/planit/masterplan.jpg",
-        "bg": "#000"
+        "theme" : {
+          "background": "#000"
+        }
       }
     ]
   },
@@ -87,33 +109,43 @@
     "items": [
       {
         "url": "media/bank/front2.jpg",
-        "bg": "#202a33"
+        "theme" : {
+          "background": "#202a33"
+        }
       },
       {
         "url": "media/bank/left5.jpg"
       },
       {
         "url": "media/bank/stair.jpg",
-        "bg": "#000"
+        "theme" : {
+          "background": "#000"
+        }
       },
       {
         "url": "media/bank/front6.jpg"
       },
       {
         "url": "media/bank/left1.jpg",
-        "bg": "#000"
+        "theme" : {
+          "background": "#000"
+        }
       },
       {
         "url": "media/bank/right1.jpg"
       },
       {
         "url": "media/bank/back2-crop.jpg",
-        "bg": "#1f1a16"
+        "theme" : {
+          "background": "#1f1a16"
+        }
       },
       {
         "url": "media/bank/helicopter-crop.jpg",
-        "bg": "#fff",
-        "className": "white"
+        "theme" : {
+          "background": "#fff",
+          "content": "dark"
+        }
       }
     ]
   }

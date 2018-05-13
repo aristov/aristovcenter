@@ -9,7 +9,7 @@
 }
 .albuminfo summary
 {
-    font-weight: bold;
+    /*font-weight: bold;*/
     padding: 12px;
     margin-bottom: -12px;
     cursor: pointer;
