@@ -86,7 +86,7 @@ export class Album extends Article {
     set data(data) {
         this._items = data.items
         this.children = [
-            new Details({
+            this._details = new Details({
                 classList : 'albuminfo',
                 children : [
                     new Summary(data.title),
@@ -106,6 +106,7 @@ export class Album extends Article {
     }
 
     set position(position) {
+        this._details.open = false
         this.dataset.position = position
     }
 
