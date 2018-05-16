@@ -85,7 +85,7 @@ export class Album extends Article {
     }
 
     set data(data) {
-        this._items = data.querySelectorAll('a')
+        const items = this._items = data.querySelectorAll('a')
         this.children = [
             this._details = new Details({
                 classList : 'albuminfo',

@@ -30,11 +30,6 @@ export class Gallery extends Div {
         const data = this.find(NoScript).textContent
         this._nextSlideIndex = 1
         this.classList = 'gallery'
-        this.children = [
-            new PrevAlbum({ onclick : event => this.prevAlbum() }),
-            this._group = new Group,
-            new NextAlbum({ onclick : event => this.nextAlbum() }),
-        ]
         this.data = data
         this.on('albumready', event => this.createAlbum())
         this.on('slideready', this.onSlideReady = this.onSlideReady.bind(this))
@@ -206,7 +201,13 @@ export class Gallery extends Div {
 
     set data(data) {
         const dom = parser.parseFromString(data, 'text/html')
-        this._items = dom.querySelectorAll('article')
+        const items = this._items = dom.querySelectorAll('article')
+        const multiple = items.length > 1
+        this.children = [
+            multiple && new PrevAlbum({ onclick : event => this.prevAlbum() }),
+            this._group = new Group,
+            multiple && new NextAlbum({ onclick : event => this.nextAlbum() }),
+        ]
         this.busy = true
         this.createAlbum()
     }
