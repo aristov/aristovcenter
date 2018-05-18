@@ -4,7 +4,7 @@
   "description": "Architect workshop of Vyacheslav Aristov",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack",
     "watch": "webpack -w"
   },
   "repository": {
