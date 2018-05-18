@@ -1,10 +1,10 @@
-@import 'src/style/header.css';
-@import 'src/style/footer.css';
-@import 'src/style/info.css';
-@import 'src/style/navbutton.css';
-@import 'src/style/album.css';
-@import 'src/style/albuminfo.css';
-@import 'src/style/slide.css';
+@import 'header.css';
+@import 'footer.css';
+@import 'info.css';
+@import 'navbutton.css';
+@import 'album.css';
+@import 'albuminfo.css';
+@import 'slide.css';
 
 a
 {
