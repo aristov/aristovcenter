@@ -1,4 +1,4 @@
-import { Button } from 'htmlmodule'
+import { Button } from 'htmlmodule/lib/button'
 import menuButtonSvg from './graphics/menubutton.svg'
 
 export class MenuButton extends Button {

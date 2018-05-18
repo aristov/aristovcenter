@@ -1,5 +1,8 @@
 import { Group } from 'ariamodule/lib/group'
-import { Article, Details, Div, Summary } from 'htmlmodule'
+import { Article } from 'htmlmodule/lib/article'
+import { Details } from 'htmlmodule/lib/details'
+import { Div } from 'htmlmodule/lib/div'
+import { Summary } from 'htmlmodule/lib/summary'
 import { NextSlide, PrevSlide } from './navbutton'
 import { Slide } from './slide'
 

@@ -1,4 +1,6 @@
-import { Body, Div, NoScript } from 'htmlmodule'
+import { Body } from 'htmlmodule/lib/body'
+import { Div } from 'htmlmodule/lib/div'
+import { NoScript } from 'htmlmodule/lib/noscript'
 import { Group } from 'ariamodule/lib/group'
 import { Album } from './album'
 import { Slide } from './slide'

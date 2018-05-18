@@ -1,4 +1,4 @@
-import { Img } from 'htmlmodule'
+import { Img } from 'htmlmodule/lib/img'
 
 const transparent = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
 
