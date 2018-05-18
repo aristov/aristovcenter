@@ -177,19 +177,24 @@ export class Gallery extends Div {
     }
 
     startTimer() {
+        const nextSlide = () => {
+            const slide = this.nextSlide()
+            if(slide) {
+                this._nextSlideIndex = slide.elementIndex
+            }
+            this.startTimer()
+        }
         setTimeout(() => {
             if(this.live !== 'off') {
                 if(this._nextSlideIndex) {
-                    const slide = this.nextSlide()
-                    if(slide) {
-                        this._nextSlideIndex = slide.elementIndex
-                    }
-                    this.startTimer()
+                    nextSlide()
                 }
                 else {
-                    this.nextAlbum()
-                    this._nextSlideIndex = 1
-                    this.startTimer()
+                    if(this.nextAlbum()) {
+                        this._nextSlideIndex = 1
+                        this.startTimer()
+                    }
+                    else nextSlide()
                 }
             }
         }, SLIDESHOW_DELAY)
