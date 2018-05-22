@@ -1,6 +1,6 @@
 const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssoPlugin = require('csso-webpack-plugin').default
 
 const NODE_ENV = process.env.NODE_ENV
