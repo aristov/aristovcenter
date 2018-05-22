@@ -40,7 +40,10 @@ if(NODE_ENV === 'production') {
     plugins.push(new UglifyJsPlugin({
         uglifyOptions : {
             keep_fnames : true,
-            keep_classnames : true
+            keep_classnames : true,
+            output : {
+                comments : false
+            }
         }
     }))
     plugins.push(new CssoPlugin)
